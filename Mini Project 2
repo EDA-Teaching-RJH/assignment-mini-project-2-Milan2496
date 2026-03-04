@@ -1,0 +1,65 @@
+import random
+
+name = ["Hamilton", "Leclerc", "Verstappen", "Tsunoda", "Norris", "Piastri"]
+number = ["44", "16", "3", "22", "4", "81"]
+team = ["Ferrari", "Ferrari", "Red Bull", "Red Bull", "Mclaren", "Mclaren"]
+skill = ["7", "9", "10", "6", "8", "8"]
+
+def display_menu():
+    print("\n--- MENU ---")
+    print("1. View Grid")
+    print("2. Register Driver")
+    print("3. Choose Strategy")
+    print("4. Start Qualifying")
+    print("5. Start Race")
+    opt = int(input("\nSelect option: "))
+    return opt
+
+def register_driver(name, number, team, skill):
+    teams = ["Ferrari", "Ferrari", "Red Bull", "Red Bull", "Mclaren", "Mclaren"]
+    new_name = input("Last name: ")
+    new_name = new_name.title()
+    new_number = int(input("Driver number (2-99): "))
+    while new_number < 2 or new_number > 99:
+        new_number = int(input("Invalid number. Try again: ")) 
+    team_list = [1,2,3]
+    new_team = int(input("Choose team (1.Audi, 2.Mercedes, 3.Cadillac): "))     
+    while new_team not in team_list:
+        new_team = int(input("Invalid number. Try again: "))
+
+    if new_team == 1:
+         new_team = "Audi"
+    elif new_team == 2:
+         new_team = "Mercedes"    
+    elif new_team == 3:
+         new_team = "Mercedes"
+
+    new_skill = random.randint(5, 10)
+    
+    new_number = str(new_number)
+    new_skill = str(new_skill)
+    
+
+    name.append(new_name)
+    number.append(new_number)
+    skill.append(new_skill)
+    team.append(new_team)
+    
+    print("\nUpdated Crew List:")
+    for i in range(len(name)):
+            print( "Name: " + name[i] + " - " + "Number: " + number[i] + " - "  + "Team: " + team[i])
+    return name, number, team, skill
+
+def main():
+    
+    run = True
+    while True:    
+        opt = display_menu()
+        if opt == 1:
+            register_driver(name, number, team, skill)         
+        elif opt == 9:
+             print("Shutting down.")
+             return
+
+
+main()
