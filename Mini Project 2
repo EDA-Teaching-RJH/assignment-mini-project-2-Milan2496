@@ -44,6 +44,7 @@ def register_driver(name, number, team, skill):
     number.append(new_number)
     skill.append(new_skill)
     team.append(new_team)
+
     
     print("\nUpdated Crew List:")
     for i in range(len(name)):
