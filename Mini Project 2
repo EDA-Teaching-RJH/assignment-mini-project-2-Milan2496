@@ -15,6 +15,18 @@ def display_menu():
     opt = int(input("\nSelect option: "))
     return opt
 
+def append(new_name, new_team, new_number):
+    new_skill = random.randint(5, 10)
+    
+    new_number = str(new_number)
+    new_skill = str(new_skill)
+    
+
+    name.append(new_name)
+    number.append(new_number)
+    skill.append(new_skill)
+    team.append(new_team)
+
 def register_driver(name, number, team, skill):
     teams = ["Ferrari", "Ferrari", "Red Bull", "Red Bull", "Mclaren", "Mclaren"]
     new_name = input("Last name: ")
@@ -27,25 +39,45 @@ def register_driver(name, number, team, skill):
     while new_team not in team_list:
         new_team = int(input("Invalid number. Try again: "))
     
-    while True:
+    Audi = 0
+    Merc = 0
+    Cadillac = 0
 
-        if new_team == 1:
-            new_team = "Audi"
-        elif new_team == 2:
-            new_team = "Mercedes"    
-        elif new_team == 3:
-            new_team = "Mercedes"
+    if Audi < 2 and Merc < 2 and Cadillac < 2:
 
-    new_skill = random.randint(5, 10)
-    
-    new_number = str(new_number)
-    new_skill = str(new_skill)
+        while True:
     
 
-    name.append(new_name)
-    number.append(new_number)
-    skill.append(new_skill)
-    team.append(new_team)
+            if new_team == 1:
+                if Audi < 2: 
+                    new_team = "Audi"
+                    Audi = Audi + 1
+                    append(new_name, new_team, new_number)
+                    break
+                else:
+                    print("Team is full")
+                    return
+            elif new_team == 2:
+                if Merc < 2: 
+                    new_team = "Mercedes"
+                    Merc = Merc + 1
+                    append(new_name, new_team, new_number)
+                    break
+                else:
+                    print("Team is full")
+                    return
+            elif new_team == 3:
+                if team.count("Cadillac") >= 2:
+                    new_team = "Cadillac"
+                    Cadillac = Cadillac + 1
+                    append(new_name, new_team, new_number)
+                    break
+                else:
+                    print("Team is full")
+                    return
+
+    else:
+        print("Grid is full, no more drivers")
 
     
     print("\nUpdated Crew List:")
@@ -66,3 +98,4 @@ def main():
 
 
 main()
+

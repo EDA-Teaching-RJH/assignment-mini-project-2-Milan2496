@@ -4,7 +4,6 @@ def display_menu():
     print("\n--- F1 ---")
     print("1. View Grid")
     print("2. Register Driver")
-    print("3. Choose Strategy")
     print("4. Start Qualifying")
     print("5. Start Race")
     opt = int(input("\nSelect option: "))
