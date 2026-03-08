@@ -2,7 +2,6 @@ import csv
 import re
 
 
-
 def display_menu():
     print("\n-----MENU-----")
     print("1. View Grid")
@@ -37,10 +36,27 @@ def register_driver():
             while new_number < 2 or new_number > 99:
                 new_number = int(input("Invalid number. Try again: "))
         except ValueError:
-            print("Input is not an integer")
+            print("Invalid input. Try again: ")
         else:
             break
-    return new_number
+    
+
+    team_list = [1,2,3]
+    
+    while True:
+        try:
+            new_team = int(input("Choose team (1.Audi, 2.Mercedes, 3.Cadillac): "))
+            while new_team not in team_list:
+                new_team = int(input("Invalid number. Try again: "))
+            break
+            
+        except ValueError:
+            print("Invalid input. Try again: ")
+        
+
+    
+
+
 
     
 
