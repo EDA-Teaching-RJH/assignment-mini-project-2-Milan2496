@@ -1,3 +1,5 @@
+import csv
+import re
 
 
 def display_menu():
@@ -10,13 +12,20 @@ def display_menu():
     opt = int(input("\nSelect option: "))
     return opt
 
-def main():
-    display_menu()
 
+def view_grid():
+    
+        print("driver")
+
+
+
+
+def main():
     while True:    
         opt = display_menu()
         if opt == 1:
             print("View Grid")
+            view_grid()
         if opt == 2:
             print("Register Driver")
         if opt == 3:
