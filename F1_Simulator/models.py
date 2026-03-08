@@ -4,9 +4,11 @@ class Driver:
 
     new_name = input("Last name: ")
     new_name = new_name.title()
+
     new_number = int(input("Driver number (2-99): "))
     while new_number < 2 or new_number > 99:
         new_number = int(input("Invalid number. Try again: ")) 
+        
     team_list = [1,2,3]
     new_team = int(input("Choose team (1.Audi, 2.Mercedes, 3.Cadillac): "))     
     while new_team not in team_list:

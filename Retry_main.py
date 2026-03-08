@@ -3,12 +3,6 @@ import re
 
 
 
-drivers = [
-    ("Hamilton",44,"Mercedes",9),
-    ("Leclerc",16,"Ferrari",9)
-]
-
-
 def display_menu():
     print("\n-----MENU-----")
     print("1. View Grid")
@@ -21,9 +15,6 @@ def display_menu():
 
 
 def view_grid():
-    for driver in drivers:
-        print(driver)
-        
     with open("drivers.csv", "r") as csv_file:
         csv_reader = csv.reader(csv_file)
 
@@ -31,7 +22,12 @@ def view_grid():
             print(line)
 
 def register_driver():
-    print("hello")
+    new_name = input("Driver name: ").strip() 
+    if re.search(r"^[a-zA-Z ]+$", new_name):
+        print("Valid")
+    else: 
+        print("Invalid")
+    
 
 
 def main():
