@@ -2,6 +2,13 @@ import csv
 import re
 
 
+
+drivers = [
+    ("Hamilton",44,"Mercedes",9),
+    ("Leclerc",16,"Ferrari",9)
+]
+
+
 def display_menu():
     print("\n-----MENU-----")
     print("1. View Grid")
@@ -14,8 +21,9 @@ def display_menu():
 
 
 def view_grid():
-    
-        print("driver")
+    for driver in drivers:
+        print(driver)
+        
 
 
 
