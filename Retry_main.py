@@ -24,8 +24,14 @@ def view_grid():
     for driver in drivers:
         print(driver)
         
+    with open("drivers.csv", "r") as csv_file:
+        csv_reader = csv.reader(csv_file)
 
+        for line in csv_reader:
+            print(line)
 
+def register_driver():
+    print("hello")
 
 
 def main():
@@ -36,6 +42,7 @@ def main():
             view_grid()
         if opt == 2:
             print("Register Driver")
+            register_driver()
         if opt == 3:
             print("Start Qualifying")
         if opt == 4:
