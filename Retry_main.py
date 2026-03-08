@@ -22,11 +22,26 @@ def view_grid():
             print(line)
 
 def register_driver():
-    new_name = input("Driver name: ").strip() 
-    if re.search(r"^[a-zA-Z ]+$", new_name):
-        print("Valid")
-    else: 
-        print("Invalid")
+
+    while True:
+        new_name = input("Driver name: ").strip() 
+        if re.search(r"^[a-zA-Z ]+$", new_name):
+            new_name = new_name.title()
+            break
+        else: 
+            print("Invalid name. Try again: ")
+
+    while True:
+        try:
+            new_number = int(input("Driver number (2-99): "))
+            while new_number < 2 or new_number > 99:
+                new_number = int(input("Invalid number. Try again: "))
+        except ValueError:
+            print("Input is not an integer")
+        else:
+            break
+    return new_number
+
     
 
 
