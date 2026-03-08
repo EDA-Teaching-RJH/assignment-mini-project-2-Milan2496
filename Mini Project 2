@@ -26,13 +26,15 @@ def register_driver(name, number, team, skill):
     new_team = int(input("Choose team (1.Audi, 2.Mercedes, 3.Cadillac): "))     
     while new_team not in team_list:
         new_team = int(input("Invalid number. Try again: "))
+    
+    while True:
 
-    if new_team == 1:
-         new_team = "Audi"
-    elif new_team == 2:
-         new_team = "Mercedes"    
-    elif new_team == 3:
-         new_team = "Mercedes"
+        if new_team == 1:
+            new_team = "Audi"
+        elif new_team == 2:
+            new_team = "Mercedes"    
+        elif new_team == 3:
+            new_team = "Mercedes"
 
     new_skill = random.randint(5, 10)
     
