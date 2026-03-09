@@ -23,7 +23,7 @@ def view_grid():
             new_name, new_number, new_team = line
             driver = Driver(new_name, new_number, new_team)
             driver.display()
-            print(f"Name: {new_name} |  #{new_number} | Team: {new_team}")
+            
             
 
 
