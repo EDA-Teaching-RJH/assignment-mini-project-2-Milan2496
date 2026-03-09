@@ -6,6 +6,7 @@ import re
 def display_menu():
     print("\n-----MENU-----")
     print("1. View Grid")
+    print("2. Reset Grid")
     print("2. Register Driver")
     print("3. Start Qualifying")
     print("4. Start Race")
@@ -20,6 +21,13 @@ def view_grid():
 
         for line in csv_reader:
             print(line)
+
+def reset_grid():
+    with open ("drivers.csv", "a", newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["Verstappen", "3", "Red Bull"])
+    print("Driver added")
+
 
 def register_driver():
 
@@ -53,9 +61,14 @@ def register_driver():
             
         except ValueError:
             print("Invalid input")
+
+    if new_team == 1:
+        new_team = "Merc"
+    elif new_team == 2:
+        new_team = "Red Bull"
           
 
-    with open ("drivers.csv", "w", newline='') as file:
+    with open ("drivers.csv", "a", newline='') as file:
         writer = csv.writer(file)
         writer.writerow([new_name, new_number, new_team])
     print("Driver added")
