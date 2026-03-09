@@ -1,13 +1,15 @@
 import csv
 import re
 
+#imports data from file Driver.py
 from Driver import Driver
 
+#allows user to choose from a variety of options within the menu
 def display_menu():
-    print("\n--------MENU--------")
-    print("1. View Grid")
-    print("2. Reset Grid")
-    print("3. Register Driver")
+    print("\n--------F1 MENU--------")
+    print("1. View Grid")    #shows all drivers on the grid
+    print("2. Reset Grid")   #resets grid to a default lineup of drivers
+    print("3. Register Driver")   #allows user to add their own driver to the grid
     print("4. Start Qualifying")
     print("5. Start Race")
     print("6. Exit")
@@ -95,6 +97,10 @@ def register_driver():
     print("Driver added")
 
 
+def qualifying():
+    print()
+
+
 def main():
     while True:    
         opt = display_menu()
@@ -109,6 +115,7 @@ def main():
             register_driver()
         if opt == 4:
             print("Start Qualifying")
+            qualifying()
         if opt == 5:
             print("Start Race")                 
         elif opt == 6:
