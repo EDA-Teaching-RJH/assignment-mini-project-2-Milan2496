@@ -1,7 +1,7 @@
 import csv
 import re
 
-from Driver import driver
+
 
 def display_menu():
     print("\n-----MENU-----")
@@ -21,7 +21,7 @@ def view_grid():
         for line in csv_reader:
             print(line)
 
-def register_driver(driver):
+def register_driver():
 
     while True:
         new_name = input("Driver name: ").strip() 
@@ -53,11 +53,12 @@ def register_driver(driver):
             
         except ValueError:
             print("Invalid input")
-        
+          
 
-    new_driver = Driver(new_name, new_number, new_team)
-
-    driver.append(new_driver)
+    with open ("drivers.csv", "w", newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([new_name, new_number, new_team])
+    print("Driver added")
 
 
 def main():
@@ -69,7 +70,7 @@ def main():
         if opt == 2:
             
             print("Register Driver")
-            register_driver(driver)
+            register_driver()
         if opt == 3:
             print("Start Qualifying")
         if opt == 4:
