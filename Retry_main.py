@@ -23,14 +23,22 @@ def view_grid():
 
 
 def reset_grid():
-
-    with open ("drivers.csv", "w", newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(["Verstappen", "3", "Red Bull"])
-        writer.writerow(["Hadjar", "6", "Red Bull"])
-        writer.writerow(["Hamilton", "44", "Ferrari"])
-        writer.writerow(["Leclerc", "16", "Ferrari"])
-    print("Grid is reset")
+    while True:
+        decide = input("Are you sure you want to reset the grid? Select yes or no: ")
+        if decide == "YES":
+            with open ("drivers.csv", "w", newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow(["Verstappen", "3", "Red Bull"])
+                writer.writerow(["Hadjar", "6", "Red Bull"])
+                writer.writerow(["Hamilton", "44", "Ferrari"])
+                writer.writerow(["Leclerc", "16", "Ferrari"])
+            print("Grid is reset")
+            break
+        elif decide == "NO":
+            print("Routing back to menu . . .")
+            break
+        else:
+            print("Invalid input")
 
 
 def register_driver():
