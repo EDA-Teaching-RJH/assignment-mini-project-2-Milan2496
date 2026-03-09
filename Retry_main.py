@@ -1,5 +1,6 @@
 import csv
 import re
+import random
 
 #imports data from file Driver.py
 from Driver import Driver
@@ -14,14 +15,12 @@ def display_menu():
     print("5. Start Race") #completes a 5 lap race and shows drivers postions at the end
     print("6. Exit")  #allows user to exit menu
     
-
     while True:
         try:
             opt = int(input("Select option: "))
             break
         except ValueError:
             print("Invalid input")
-
     return opt
 
 
@@ -109,9 +108,14 @@ def register_driver():
         writer.writerow([driver.new_name, driver.new_number, driver.new_team])
     print("Driver added")
 
+def get_drivers():
+    driver = []
+    
 
 def qualifying():
-    print()
+    drivers = get_drivers()
+    random.shuffle(drivers)
+    
 
 #uses user input in the main menu to select which function to use
 def main():
