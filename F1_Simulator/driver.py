@@ -1,3 +1,0 @@
-class driver:
-    
-    print("hello")

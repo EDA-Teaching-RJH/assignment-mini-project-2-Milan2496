@@ -1,2 +1,2 @@
-("Hamilton",44,"Mercedes",9),
-("Leclerc",16,"Ferrari",9)
+Driver("Hamilton",44,"Mercedes"),
+Driver("Leclerc",16,"Ferrari")

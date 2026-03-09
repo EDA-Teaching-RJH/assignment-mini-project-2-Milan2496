@@ -1,6 +1,7 @@
 import csv
 import re
 
+from driver import Driver
 
 def display_menu():
     print("\n-----MENU-----")
@@ -20,7 +21,7 @@ def view_grid():
         for line in csv_reader:
             print(line)
 
-def register_driver():
+def register_driver(driver):
 
     while True:
         new_name = input("Driver name: ").strip() 
@@ -28,15 +29,15 @@ def register_driver():
             new_name = new_name.title()
             break
         else: 
-            print("Invalid name. Try again: ")
+            print("Invalid name")
 
     while True:
         try:
             new_number = int(input("Driver number (2-99): "))
             while new_number < 2 or new_number > 99:
-                new_number = int(input("Invalid number. Try again: "))
+                new_number = int(input("Invalid number. Choose driver number (2-99): "))
         except ValueError:
-            print("Invalid input. Try again: ")
+            print("Invalid input")
         else:
             break
     
@@ -51,14 +52,12 @@ def register_driver():
             break
             
         except ValueError:
-            print("Invalid input. Try again: ")
+            print("Invalid input")
         
 
-    
+    new_driver = Driver(new_name, new_number, new_team)
 
-
-
-    
+    driver.append(new_driver)
 
 
 def main():
@@ -68,8 +67,9 @@ def main():
             print("View Grid")
             view_grid()
         if opt == 2:
+            
             print("Register Driver")
-            register_driver()
+            register_driver(driver)
         if opt == 3:
             print("Start Qualifying")
         if opt == 4:
