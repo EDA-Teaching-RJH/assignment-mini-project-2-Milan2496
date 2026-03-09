@@ -1,6 +1,7 @@
 import csv
 import re
 
+from Driver import Driver
 
 def display_menu():
     print("\n--------MENU--------")
@@ -20,6 +21,8 @@ def view_grid():
 
         for line in csv_reader:
             new_name, new_number, new_team = line
+            driver = Driver(new_name, new_number, new_team)
+            driver.display()
             print(f"Name: {new_name} |  #{new_number} | Team: {new_team}")
             
 
@@ -84,9 +87,11 @@ def register_driver():
     elif new_team == 3:
         new_team = "Mclaren"      
 
+    driver = Driver(new_name, new_number, new_team)
+
     with open ("drivers.csv", "a", newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([new_name, new_number, new_team])
+        writer.writerow([driver.new_name, driver.new_number, driver.new_team])
     print("Driver added")
 
 
