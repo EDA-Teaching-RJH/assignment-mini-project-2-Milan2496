@@ -13,7 +13,15 @@ def display_menu():
     print("4. Start Qualifying")  #orders drivers
     print("5. Start Race") #completes a 5 lap race and shows drivers postions at the end
     print("6. Exit")  #allows user to exit menu
-    opt = int(input("\nSelect option: "))
+    
+
+    while True:
+        try:
+            opt = int(input("Select option: "))
+            break
+        except ValueError:
+            print("Invalid input")
+
     return opt
 
 
@@ -110,13 +118,13 @@ def main():
     while True:    
         opt = display_menu()
         if opt == 1:
-            print("---------------VIEW GRID---------------")
+            print("\n---------------VIEW GRID---------------")
             view_grid()
         if opt == 2:           
-            print("RESET GRID")
+            print("\nRESET GRID")
             reset_grid()
         if opt == 3:           
-            print("-----REGISTER DRIVER-----")
+            print("\n-----REGISTER DRIVER-----")
             register_driver()
         if opt == 4:
             print("Start Qualifying")
@@ -126,5 +134,4 @@ def main():
         elif opt == 6:
              print("Exit")
              return
-if __name__ == "__main__":
-    main()
+main()
