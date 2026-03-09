@@ -10,17 +10,19 @@ def display_menu():
     print("1. View Grid")    #shows all drivers on the grid
     print("2. Reset Grid")   #resets grid to a default lineup of drivers
     print("3. Register Driver")   #allows user to add their own driver to the grid
-    print("4. Start Qualifying")
-    print("5. Start Race")
-    print("6. Exit")
+    print("4. Start Qualifying")  #orders drivers
+    print("5. Start Race") #completes a 5 lap race and shows drivers postions at the end
+    print("6. Exit")  #allows user to exit menu
     opt = int(input("\nSelect option: "))
     return opt
 
 
 def view_grid():
+    #open csv file
     with open("drivers.csv", "r") as csv_file:
         csv_reader = csv.reader(csv_file)
 
+        #reads each line of code in the csv file
         for line in csv_reader:
             new_name, new_number, new_team = line
             driver = Driver(new_name, new_number, new_team)
@@ -31,11 +33,14 @@ def view_grid():
 
 def reset_grid():
     while True:
+        #checks if the user is sure they want to reset grid
         decide = input("Are you sure you want to reset the grid? Select Yes or No: ")
-        decide = decide.title()
+        decide = decide.title() #capitalises first letter and leaves rest in lower case
         if decide == "Yes":
+            #opens csv file to write in it
             with open ("drivers.csv", "w", newline='') as file:
                 writer = csv.writer(file)
+                #adds drivers to default grid
                 writer.writerow(["Verstappen", "3", "Red Bull"])
                 writer.writerow(["Hadjar", "6", "Red Bull"])
                 writer.writerow(["Hamilton", "44", "Ferrari"])
@@ -43,17 +48,17 @@ def reset_grid():
             print("GRID IS RESET")
             break
         elif decide == "No":
-            print("Routing back to menu . . .")
+            print("Routing back to menu . . .")  #sends user back to main menu
             break
         else:
-            print("Invalid input")
+            print("Invalid input") #prompts user to try again
 
 
 def register_driver():
 
     while True:
         new_name = input("Driver name: ").strip() 
-        if re.search(r"^[a-zA-Z ]+$", new_name):
+        if re.search(r"^[a-zA-Z ]+$", new_name):   #checks that the input is valid inside the parameters of being in the alphabet
             new_name = new_name.title()
             break
         else: 
@@ -62,7 +67,7 @@ def register_driver():
     while True:
         try:
             new_number = int(input("Driver number (2-99): "))
-            while new_number < 2 or new_number > 99:
+            while new_number < 2 or new_number > 99:    #checks that the numnber is within the range of 2 and 99
                 new_number = int(input("Number Unavailable. Choose driver number (2-99): "))
         except ValueError:
             print("Invalid input")
@@ -90,7 +95,7 @@ def register_driver():
         new_team = "Mclaren"      
 
     driver = Driver(new_name, new_number, new_team)
-
+    #opens csv file and writes in the new driver
     with open ("drivers.csv", "a", newline='') as file:
         writer = csv.writer(file)
         writer.writerow([driver.new_name, driver.new_number, driver.new_team])
@@ -100,7 +105,7 @@ def register_driver():
 def qualifying():
     print()
 
-
+#uses user input in the main menu to select which function to use
 def main():
     while True:    
         opt = display_menu()
@@ -121,4 +126,5 @@ def main():
         elif opt == 6:
              print("Exit")
              return
-main()
+if __name__ == "__main__":
+    main()
