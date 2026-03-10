@@ -193,23 +193,23 @@ def race():
         weather = "wet"
 
     if weather == "dry":
-        time = 0.999
+        time = 2.999
     elif weather == "wet":
-        time = 1.999
+        time = 4.999
 
     for line in driver:
         new_name, new_number, new_team = line
         lap_add = random.uniform(0, time)
-        lap_time = round(lap_time + lap_add, 3)
+        lap_time = round(lap_add, 3)
         
         if re.search(r"^[0-9]{2}.[0-9]{2}+$", str(lap_time)):
-            print(f"{position} - {new_name} - 1:{lap_time}0")
+            print(f"{position} - {new_name} - +{lap_time}0")
             position = position + 1
         elif re.search(r"^[0-9]{2}.[0-9]{1}+$", str(lap_time)):
-            print(f"{position} - {new_name} - 1:{lap_time}00")
+            print(f"{position} - {new_name} - +{lap_time}00")
             position = position + 1
         else:
-            print(f"{position} - {new_name} - 1:{lap_time}")
+            print(f"{position} - {new_name} - +{lap_time}")
             position = position + 1
 
 
