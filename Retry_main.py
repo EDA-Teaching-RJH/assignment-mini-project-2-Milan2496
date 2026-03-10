@@ -111,21 +111,26 @@ def register_driver():
 
 def qualifying():
 
-    driver = []
+    driver = []   #creates a list where the shuffled drivers will be stored
 
-    with open("drivers.csv", "r") as csv_file:
+    with open("drivers.csv", "r") as csv_file:   #opens csv file
         csv_reader = csv.reader(csv_file)
 
 
         for line in csv_reader:
             new_name, new_number, new_team = line
-            driver.append(line)
+            driver.append(line)  #writes the data into the list
    
-    random.shuffle(driver)
+    random.shuffle(driver)    #shuffles the drivers
     
+    position = 1
+
     for line in driver:
         new_name, new_number, new_team = line
-        print(f"{new_name}")
+        print(f"{position} - {new_name}")
+        position = position + 1
+
+
 
 #uses user input in the main menu to select which function to use
 def main():
@@ -141,7 +146,7 @@ def main():
             print("\n-----REGISTER DRIVER-----")
             register_driver()
         if opt == 4:
-            print("Start Qualifying")
+            print("\n---QUALIFYING RESULTS---")
             qualifying()
         if opt == 5:
             print("Start Race")                 
