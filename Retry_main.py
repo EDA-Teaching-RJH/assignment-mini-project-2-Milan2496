@@ -116,13 +116,15 @@ def qualifying():
     with open("drivers.csv", "r") as csv_file:
         csv_reader = csv.reader(csv_file)
 
+        drivers = []
+        
         #reads each line of code in the csv file
         for line in csv_reader:
             new_name, new_number, new_team = line
-            drivers.append = Driver(new_name, new_number, new_team)
+            drivers.append(Driver(new_name, new_number, new_team))
 
-    for i in range (len(drivers)):
-        drivers = random.shuffle(drivers)
+    for _ in range (len(drivers)):
+        random.shuffle(drivers)
         print (drivers)
 
 #uses user input in the main menu to select which function to use
