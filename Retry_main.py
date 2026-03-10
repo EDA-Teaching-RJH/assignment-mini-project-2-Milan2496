@@ -111,21 +111,19 @@ def register_driver():
 
 def qualifying():
 
-    drivers = []
+    driver = []
 
     with open("drivers.csv", "r") as csv_file:
         csv_reader = csv.reader(csv_file)
 
-        drivers = []
-        
-        #reads each line of code in the csv file
+
         for line in csv_reader:
             new_name, new_number, new_team = line
-            drivers.append(Driver(new_name, new_number, new_team))
+            driver.append(line)
    
-    random.shuffle(drivers)
-    for i in range(len(drivers)):
-        print(Driver(new_name, new_number, new_team))
+    random.shuffle(driver)
+    for _ in range(len(driver)):
+        print(driver)
 
 #uses user input in the main menu to select which function to use
 def main():
