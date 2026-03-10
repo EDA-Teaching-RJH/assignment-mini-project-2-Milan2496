@@ -129,11 +129,9 @@ def qualifying():
 
     for line in driver:
         new_name, new_number, new_team = line
-        lap_add = random.randint(0, 999)
-        lap_add = lap_add/1000
-        lap_time = lap_time + lap_add
+        lap_add = random.uniform(0, 0.999)
+        lap_time = round(lap_time + lap_add, 3)
         
-
         print(f"{position} - {new_name} - 1:{lap_time}")
         position = position + 1
         
