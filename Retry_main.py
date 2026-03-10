@@ -108,14 +108,22 @@ def register_driver():
         writer.writerow([driver.new_name, driver.new_number, driver.new_team])
     print("Driver added")
 
-def get_drivers():
-    driver = []
-    
 
 def qualifying():
-    drivers = get_drivers()
-    random.shuffle(drivers)
-    
+
+    drivers = []
+
+    with open("drivers.csv", "r") as csv_file:
+        csv_reader = csv.reader(csv_file)
+
+        #reads each line of code in the csv file
+        for line in csv_reader:
+            new_name, new_number, new_team = line
+            drivers.append = Driver(new_name, new_number, new_team)
+
+    for i in range (len(drivers)):
+        drivers = random.shuffle(drivers)
+        print (drivers)
 
 #uses user input in the main menu to select which function to use
 def main():
