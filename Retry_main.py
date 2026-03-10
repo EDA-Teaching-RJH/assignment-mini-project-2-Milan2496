@@ -2,6 +2,7 @@ import csv
 import re
 import random
 
+
 #imports data from file Driver.py
 from Driver import Driver
 
@@ -124,11 +125,27 @@ def qualifying():
     random.shuffle(driver)    #shuffles the drivers
     
     position = 1   
-    lap_time = 18.792
+
+    track_weather = random.randint(5, 10)
+    
+    if track_weather == 7:
+        lap_time = 20.294    #wet lap conditions
+        print("\nWeather: Wet Conditions")
+        print("May Affect Lap times\n")
+        weather = "wet"
+    else:
+        lap_time = 18.792    #dry lap conditions
+        print("\nWeather: Dry Conditions\n")
+        weather = "dry"
+
+    if weather == "dry":
+        time = 0.999
+    elif weather == "wet":
+        time = 1.999
 
     for line in driver:
         new_name, new_number, new_team = line
-        lap_add = random.uniform(0, 0.999)
+        lap_add = random.uniform(0, time)
         lap_time = round(lap_time + lap_add, 3)
         
         if re.search(r"^[0-9]{2}.[0-9]{2}+$", str(lap_time)):
@@ -143,7 +160,14 @@ def qualifying():
 
 
 def race():
+    
+    import time     #import a library to delay the time it takes to print out an output
 
+    lights = ["🔴", "🔴", "🔴", "START!!!"]
+    for line in lights:
+        print(line)
+        time.sleep(0.7)
+    
     driver = []   #creates a list where the shuffled drivers will be stored
 
     with open("drivers.csv", "r") as csv_file:   #opens csv file
@@ -157,7 +181,7 @@ def race():
     position = 1   
 
     track_weather = random.randint(5, 10)
-    
+
     if track_weather == 7:
         lap_time = 18.792    #dry lap conditions
         print("Weather: Dry Conditions")
