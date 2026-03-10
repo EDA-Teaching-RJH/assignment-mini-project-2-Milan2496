@@ -127,9 +127,15 @@ def qualifying():
 
     for line in driver:
         new_name, new_number, new_team = line
-        print(f"{position} - {new_name}")
+        lap_add = random.randint(5, 10)
+        lap_time = (f"1.{lap_add}")
+        print(f"{position} - {new_name} - {lap_time}")
         position = position + 1
+        
+        
 
+def race():
+    print()
 
 
 #uses user input in the main menu to select which function to use
@@ -149,7 +155,8 @@ def main():
             print("\n---QUALIFYING RESULTS---")
             qualifying()
         if opt == 5:
-            print("Start Race")                 
+            print("-----START RACE-----")  
+            race()               
         elif opt == 6:
              print("Exit")
              return
