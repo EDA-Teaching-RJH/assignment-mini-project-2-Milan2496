@@ -61,6 +61,7 @@ def reset_grid():
             print("Invalid input") #prompts user to try again
 
 
+
 def register_driver():
 
     while True:
@@ -109,22 +110,20 @@ def register_driver():
     print("Driver added")
 
 
+
 def qualifying():
 
     driver = []   #creates a list where the shuffled drivers will be stored
 
     with open("drivers.csv", "r") as csv_file:   #opens csv file
         csv_reader = csv.reader(csv_file)
-
-
         for line in csv_reader:
             new_name, new_number, new_team = line
             driver.append(line)  #writes the data into the list
    
     random.shuffle(driver)    #shuffles the drivers
     
-    position = 1
-    
+    position = 1   
     lap_time = 18.792
 
     for line in driver:
@@ -144,7 +143,36 @@ def qualifying():
 
 
 def race():
-    print()
+    
+    driver = []   #creates a list where the shuffled drivers will be stored
+
+    with open("drivers.csv", "r") as csv_file:   #opens csv file
+        csv_reader = csv.reader(csv_file)
+        for line in csv_reader:
+            new_name, new_number, new_team = line
+            driver.append(line)  #writes the data into the list
+   
+    random.shuffle(driver)    #shuffles the drivers
+    
+    position = 1   
+    lap_time = 18.792
+
+    for line in driver:
+        new_name, new_number, new_team = line
+        lap_add = random.uniform(0, 0.999)
+        lap_time = round(lap_time + lap_add, 3)
+        
+        if re.search(r"^[0-9]{2}.[0-9]{2}+$", str(lap_time)):
+            print(f"{position} - {new_name} - 1:{lap_time}0")
+            position = position + 1
+        elif re.search(r"^[0-9]{2}.[0-9]{1}+$", str(lap_time)):
+            print(f"{position} - {new_name} - 1:{lap_time}00")
+            position = position + 1
+        else:
+            print(f"{position} - {new_name} - 1:{lap_time}")
+            position = position + 1
+
+
 
 
 #uses user input in the main menu to select which function to use
