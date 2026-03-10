@@ -122,10 +122,10 @@ def qualifying():
         for line in csv_reader:
             new_name, new_number, new_team = line
             drivers.append(Driver(new_name, new_number, new_team))
-
-    for _ in range (len(drivers)):
-        random.shuffle(drivers)
-        print (drivers)
+   
+    random.shuffle(drivers)
+    for i in range(len(drivers)):
+        print(Driver(new_name, new_number, new_team))
 
 #uses user input in the main menu to select which function to use
 def main():
