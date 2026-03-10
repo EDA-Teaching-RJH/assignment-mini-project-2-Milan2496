@@ -149,13 +149,13 @@ def qualifying():
         lap_time = round(lap_time + lap_add, 3)
         
         if re.search(r"^[0-9]{2}.[0-9]{2}+$", str(lap_time)):
-            print(f"{position} - {new_name} - 1:{lap_time}0")
+            print(f"{position:<10} - {new_name:<10} - 1:{lap_time:<10}0")
             position = position + 1
         elif re.search(r"^[0-9]{2}.[0-9]{1}+$", str(lap_time)):
-            print(f"{position} - {new_name} - 1:{lap_time}00")
+            print(f"{position:<10} - {new_name:<10} - 1:{lap_time:<10}00")
             position = position + 1
         else:
-            print(f"{position} - {new_name} - 1:{lap_time}")
+            print(f"{position:<10} - {new_name:<10} - 1:{lap_time}")
             position = position + 1
 
 
