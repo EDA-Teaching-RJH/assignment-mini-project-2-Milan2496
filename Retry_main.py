@@ -125,17 +125,23 @@ def qualifying():
     
     position = 1
     
-    lap_time =18.792
+    lap_time = 18.792
 
     for line in driver:
         new_name, new_number, new_team = line
         lap_add = random.uniform(0, 0.999)
         lap_time = round(lap_time + lap_add, 3)
         
-        print(f"{position} - {new_name} - 1:{lap_time}")
-        position = position + 1
-        
-        
+        if re.search(r"^[0-9]{2}.[0-9]{2}+$", str(lap_time)):
+            print(f"{position} - {new_name} - 1:{lap_time}0")
+            position = position + 1
+        elif re.search(r"^[0-9]{2}.[0-9]{1}+$", str(lap_time)):
+            print(f"{position} - {new_name} - 1:{lap_time}00")
+            position = position + 1
+        else:
+            print(f"{position} - {new_name} - 1:{lap_time}")
+            position = position + 1
+
 
 def race():
     print()
