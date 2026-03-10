@@ -122,8 +122,10 @@ def qualifying():
             driver.append(line)
    
     random.shuffle(driver)
-    for _ in range(len(driver)):
-        print(driver)
+    
+    for line in driver:
+        new_name, new_number, new_team = line
+        print(f"{new_name}")
 
 #uses user input in the main menu to select which function to use
 def main():
