@@ -14,6 +14,7 @@ def display_menu():
     print("3. Register Driver")   #allows user to add their own driver to the grid
     print("4. Start Qualifying")  #orders drivers
     print("5. Start Race") #completes a 5 lap race and shows drivers postions at the end
+    print("6. Choose track")
     print("6. Exit")  #allows user to exit menu
     
     while True:
@@ -110,10 +111,25 @@ def register_driver():
         writer.writerow([driver.new_name, driver.new_number, driver.new_team])
     print("Driver added")
 
+def race_track(race_name):
+    race_name = input("Select a track")
+
+    track_list = ["Monza","Spa","Silverstone"]
+    
+    while True:
+        try:
+            race_name = int(input("Select a track - Monza | Spa | Silverstone: "))
+            race_name = race_name.title()
+            while race_name not in track_list:
+                race_name = int(input(f"Invalid input \nSelect a track - Monza | Spa | Silverstone: "))
+            break
+            
+        except ValueError:
+            print("Invalid input")
 
 
-def qualifying():
-
+def qualifying(race_name):
+    print(race_name)
     import time
 
     driver = []   #creates a list where the shuffled drivers will be stored
@@ -143,9 +159,9 @@ def qualifying():
         weather = "dry"
 
     if weather == "dry":
-        time = 0.999
+        add_time = 0.999
     elif weather == "wet":
-        time = 1.999
+        add_time = 1.999
 
     Pos = "Position"
     Name = "Name"
@@ -154,7 +170,7 @@ def qualifying():
 
     for line in driver:
         new_name, new_number, new_team = line
-        lap_add = random.uniform(0, time)
+        lap_add = random.uniform(0, add_time)
         lap_time = round(lap_time + lap_add, 3)
         
         if re.search(r"^[0-9]{2}.[0-9]{2}+$", str(lap_time)):
@@ -171,6 +187,8 @@ def qualifying():
 def race():
     
     import time     #import a library to delay the time it takes to print out an output
+
+    race_track = input("Select a track to ")
 
 
     track_weather = random.randint(5, 10)
@@ -245,7 +263,7 @@ def race():
 
 
 #uses user input in the main menu to select which function to use
-def main():
+def main(race_name):
     while True:    
         opt = display_menu()
         if opt == 1:
@@ -259,11 +277,14 @@ def main():
             register_driver()
         if opt == 4:
             print("\n---QUALIFYING RESULTS---")
-            qualifying()
+            qualifying(race_name)
         if opt == 5:
             print("-----START RACE-----")  
-            race()               
-        elif opt == 6:
+            race_track(race_name)  
+        if opt == 6:
+            print("-----START RACE-----")  
+            race()              
+        elif opt == 7:
              print("Exit")
              return
-main()
+main(race_name)
