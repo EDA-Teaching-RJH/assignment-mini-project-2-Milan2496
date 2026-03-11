@@ -110,7 +110,7 @@ def register_driver():
     print("Driver added")
 
 
-def race_track(race_name):
+def race_track():
     
     track_list = ["Monza", "Spa",  "Silverstone"]
     
@@ -134,11 +134,17 @@ def race_track(race_name):
         #reads each line of code in the csv file
 
         for line in csv_reader:
-            track_name, best_time = line
-            track.append(line)
+            track_name, best_time, wet, dry = line
+            track = Track(track_name, best_time, wet, dry)
+            track.append((track_name, best_time, wet, dry))
           
-        track = Track(track_name[track_list], best_time[track_list])
+        print(track[0])
+        print({track_name})
         track.track_display()
+
+        
+
+
 
 
 def qualifying(race_name):
@@ -270,9 +276,6 @@ def race():
                 position = position + 1
 
 
-
-
-
 #uses user input in the main menu to select which function to use
 race_name = "Unselected"
 def main(race_name):
@@ -292,10 +295,10 @@ def main(race_name):
             qualifying(race_name)
         if opt == 5:
             print("-----START RACE-----")  
-            race()  
+            race(race_name)  
         if opt == 6:
             print("-----CHOOSE TRACK-----")  
-            race_name = race_track(race_name)              
+            race_name = race_track()              
         elif opt == 7:
              print("Exit")
              return
