@@ -114,6 +114,8 @@ def register_driver():
 
 def qualifying():
 
+    import time
+
     driver = []   #creates a list where the shuffled drivers will be stored
 
     with open("drivers.csv", "r") as csv_file:   #opens csv file
@@ -130,12 +132,14 @@ def qualifying():
     
     if track_weather == 7:
         lap_time = 20.294    #wet lap conditions
-        print("\nWeather: Wet Conditions")
-        print("May Affect Lap times\n")
+        print("\nWeather: Rain")
+        print("Warning **Wet Track**\n")
+        time.sleep(0.7)
         weather = "wet"
     else:
         lap_time = 18.792    #dry lap conditions
-        print("\nWeather: Dry Conditions\n")
+        print("\nWeather: Sunny\n")
+        time.sleep(0.7)
         weather = "dry"
 
     if weather == "dry":
@@ -173,13 +177,13 @@ def race():
 
     if track_weather == 7:
         lap_time = 20.294    #wet lap conditions
-        print("Weather: Rain")
-        print("Warning **Wet Track**")
+        print("\nWeather: Rain")
+        print("Warning **Wet Track**\n")
         time.sleep(0.7)
         weather = "wet"
     else:
         lap_time = 18.792    #dry lap conditions
-        print("Weather: Sunny")
+        print("\nWeather: Sunny\n")
         time.sleep(0.7)
         weather = "dry"
 
