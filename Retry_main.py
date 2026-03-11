@@ -1,6 +1,6 @@
-import csv
+import csv   #imports data from csv file
 import re
-import random
+import random    #has function to randomly generate number
 
 
 #imports data from file Driver.py
@@ -17,11 +17,11 @@ def display_menu():
     print("6. Exit")  #allows user to exit menu
     
     while True:
-        try:
-            opt = int(input("Select option: "))
+        try:    #tries to execute
+            opt = int(input("Select option: "))   #asks user for an input giving them a choice from the menu
             break
         except ValueError:
-            print("Invalid input")
+            print("Invalid input")    #if the input isn't valid, the program prompts the user to try again
     return opt
 
 
@@ -32,9 +32,9 @@ def view_grid():
 
         #reads each line of code in the csv file
         for line in csv_reader:
-            new_name, new_number, new_team = line
+            new_name, new_number, new_team = line   
             driver = Driver(new_name, new_number, new_team)
-            driver.display()
+            driver.display()   #usees the function inside the other code and displays the information
             
             
 
@@ -202,20 +202,37 @@ def race():
     elif weather == "wet":
         time = 4.999
 
+    Pos = "Position"
+    Name = "Name"
+    Time = "Interval"
+    print(f"\n{Pos:<9} {Name:<11} {Time} ")
+
     for line in driver:
         new_name, new_number, new_team = line
         lap_add = random.uniform(0, time)
         lap_time = round(lap_add, 3)
         
-        if re.search(r"^[0-9]{2}.[0-9]{2}+$", str(lap_time)):
-            print(f"{position} - {new_name} - +{lap_time}0")
-            position = position + 1
-        elif re.search(r"^[0-9]{2}.[0-9]{1}+$", str(lap_time)):
-            print(f"{position} - {new_name} - +{lap_time}00")
-            position = position + 1
+        if position == 1:
+            if re.search(r"^[0-9]{2}.[0-9]{2}+$", str(lap_time)):
+                print(f"{position:<9} {new_name:<11}    -")
+                position = position + 1
+            elif re.search(r"^[0-9]{2}.[0-9]{1}+$", str(lap_time)):
+                print(f"{position:<9} {new_name:11}    -")
+                position = position + 1
+            else:
+                print(f"{position:<9} {new_name:<11}    -")
+                position = position + 1       
         else:
-            print(f"{position} - {new_name} - +{lap_time}")
-            position = position + 1
+            if re.search(r"^[0-9]{2}.[0-9]{2}+$", str(lap_time)):
+                print(f"{position:<9} {new_name:<11} +{lap_time}0")
+                position = position + 1
+            elif re.search(r"^[0-9]{2}.[0-9]{1}+$", str(lap_time)):
+                print(f"{position:<9} {new_name:11} +{lap_time}00")
+                position = position + 1
+            else:
+                print(f"{position:<9} {new_name:<11} +{lap_time}")
+                position = position + 1
+
 
 
 
