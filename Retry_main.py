@@ -168,6 +168,26 @@ def race():
     
     import time     #import a library to delay the time it takes to print out an output
 
+
+    track_weather = random.randint(5, 10)
+
+    if track_weather == 7:
+        lap_time = 20.294    #wet lap conditions
+        print("Weather: Rain")
+        print("Warning **Wet Track**")
+        time.sleep(0.7)
+        weather = "wet"
+    else:
+        lap_time = 18.792    #dry lap conditions
+        print("Weather: Sunny")
+        time.sleep(0.7)
+        weather = "dry"
+
+    if weather == "dry":
+        add_time = 2.999
+    elif weather == "wet":
+        add_time = 4.999
+
     lights = ["🔴", "🔴", "🔴", "START!!!"]
     for line in lights:
         print(line)
@@ -185,23 +205,6 @@ def race():
     
     position = 1   
 
-    track_weather = random.randint(5, 10)
-
-    if track_weather == 7:
-        lap_time = 18.792    #dry lap conditions
-        print("Weather: Dry Conditions")
-        weather = "dry"
-    else:
-        lap_time = 20.294    #wet lap conditions
-        print("Weather: Wet Conditions")
-        print("May Affect Lap times")
-        weather = "wet"
-
-    if weather == "dry":
-        time = 2.999
-    elif weather == "wet":
-        time = 4.999
-
     Pos = "Position"
     Name = "Name"
     Time = "Interval"
@@ -209,7 +212,7 @@ def race():
 
     for line in driver:
         new_name, new_number, new_team = line
-        lap_add = random.uniform(0, time)
+        lap_add = random.uniform(0, add_time)
         lap_time = round(lap_add, 3)
         
         if position == 1:
