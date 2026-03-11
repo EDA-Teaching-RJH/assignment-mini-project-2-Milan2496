@@ -15,7 +15,7 @@ def display_menu():
     print("4. Start Qualifying")  #orders drivers
     print("5. Start Race") #completes a 5 lap race and shows drivers postions at the end
     print("6. Choose track")
-    print("6. Exit")  #allows user to exit menu
+    print("7. Exit")  #allows user to exit menu
     
     while True:
         try:    #tries to execute
@@ -112,16 +112,17 @@ def register_driver():
     print("Driver added")
 
 def race_track(race_name):
-    race_name = input("Select a track")
+    
 
     track_list = ["Monza","Spa","Silverstone"]
     
     while True:
         try:
-            race_name = int(input("Select a track - Monza | Spa | Silverstone: "))
+            race_name = (input("Select a track - Monza | Spa | Silverstone: "))
             race_name = race_name.title()
             while race_name not in track_list:
                 race_name = int(input(f"Invalid input \nSelect a track - Monza | Spa | Silverstone: "))
+                return race_name
             break
             
         except ValueError:
@@ -263,6 +264,7 @@ def race():
 
 
 #uses user input in the main menu to select which function to use
+race_name = "Unselected"
 def main(race_name):
     while True:    
         opt = display_menu()
@@ -280,10 +282,10 @@ def main(race_name):
             qualifying(race_name)
         if opt == 5:
             print("-----START RACE-----")  
-            race_track(race_name)  
+            race()  
         if opt == 6:
-            print("-----START RACE-----")  
-            race()              
+            print("-----CHOOSE TRACK-----")  
+            race_name = race_track(race_name)              
         elif opt == 7:
              print("Exit")
              return
