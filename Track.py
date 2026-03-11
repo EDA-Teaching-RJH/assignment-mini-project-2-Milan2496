@@ -6,5 +6,5 @@ class Track:
         self.wet_time = wet_time
         self.dry_time = dry_time
 
-    def display(self):
-        print(f"Name: {self.new_name} | #{self.new_number} | Team: {self.new_team}")
+    def track_display(self):
+        print(f"Track: {self.track_name} | Record Time:{self.best_time}")

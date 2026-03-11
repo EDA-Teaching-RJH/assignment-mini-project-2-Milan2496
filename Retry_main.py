@@ -5,6 +5,7 @@ import random    #has function to randomly generate number
 
 #imports data from file Driver.py
 from Driver import Driver
+from Track import Track
 
 #allows user to choose from a variety of options within the menu
 def display_menu():
@@ -36,9 +37,7 @@ def view_grid():
             new_name, new_number, new_team = line   
             driver = Driver(new_name, new_number, new_team)
             driver.display()   #usees the function inside the other code and displays the information
-            
-            
-
+                
 
 def reset_grid():
     while True:
@@ -61,7 +60,6 @@ def reset_grid():
             break
         else:
             print("Invalid input") #prompts user to try again
-
 
 
 def register_driver():
@@ -111,10 +109,10 @@ def register_driver():
         writer.writerow([driver.new_name, driver.new_number, driver.new_team])
     print("Driver added")
 
+
 def race_track(race_name):
     
-
-    track_list = ["Monza","Spa","Silverstone"]
+    track_list = ["Monza", "Spa",  "Silverstone"]
     
     while True:
         try:
@@ -123,10 +121,24 @@ def race_track(race_name):
             while race_name not in track_list:
                 race_name = int(input(f"Invalid input \nSelect a track - Monza | Spa | Silverstone: "))
                 return race_name
-            break
-            
+            break        
         except ValueError:
             print("Invalid input")
+
+
+    track = []
+
+    with open("tracks.csv", "r") as csv_file:
+        csv_reader = csv.reader(csv_file)
+
+        #reads each line of code in the csv file
+
+        for line in csv_reader:
+            track_name, best_time = line
+            track.append(line)
+          
+        track = Track(track_name[track_list], best_time[track_list])
+        track.track_display()
 
 
 def qualifying(race_name):
@@ -188,8 +200,6 @@ def qualifying(race_name):
 def race():
     
     import time     #import a library to delay the time it takes to print out an output
-
-    race_track = input("Select a track to ")
 
 
     track_weather = random.randint(5, 10)
