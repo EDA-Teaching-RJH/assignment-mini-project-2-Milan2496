@@ -119,8 +119,7 @@ def race_track():
             race_name = input("Select a track - Monza | Spa | Silverstone: ")
             race_name = race_name.title()
             while race_name not in track_list:
-                race_name = int(input(f"Invalid input \nSelect a track - Monza | Spa | Silverstone: "))
-                
+                race_name = input(f"Invalid input \nSelect a track - Monza | Spa | Silverstone: ")
             break        
         except ValueError:
             print("Invalid input")
@@ -135,17 +134,16 @@ def race_track():
 
         for line in csv_reader:
             track_name, best_time, wet, dry = line
-            track.append((track_name, best_time, wet, dry))
-          
+            
+            if race_name == track_name:
+                track = Track(track_name, best_time, wet, dry)
+                track.track_display()
+                
         
-        track = Track(track_name, best_time, wet, dry)
-        track.track_display()
+        
         
     return race_name
         
-
-
-
 
 def qualifying(race_name):
 
