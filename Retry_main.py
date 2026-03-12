@@ -250,117 +250,127 @@ def race(race_name):
     
     import time     #import a library to delay the time it takes to print out an output
 
-    if race_name == "Unselected":
-        while race_name == "Unselected":
-            print("\nTrack not selected")
-            race_name = race_track()
-    else:
-        read_track(race_name)
-
-    track_weather = random.randint(5, 10)
-
-    if track_weather == 7:
-        
-        print("Weather: Rain")
-        print("Warning **Wet Track**\n")
-        time.sleep(0.7)
-        weather = "wet"
-    else:
-       
-        print("Weather: Sunny\n")
-        time.sleep(0.7)
-        weather = "dry"
-
-    if weather == "dry":
-        add_time = 4.999
-    elif weather == "wet":
-        add_time = 8.999
-
-    pit = [1,2,3]
-
-    tyre1 = ["1. Medium - Hard", "2. Hard - Medium", "3. Medium - Medium"]
-    tyre2 = ["1. Soft - Medium - Soft", "2. Medium - Soft - Medium", "3. Medium - Hard - Soft"]
-
-    while True:
-        try:
-            pit_stop = int(input("Choose pit stop strategy (1 stop | 2 stop). Enter 1 or 2: "))
-            while pit_stop not in pit:
-                pit_stop = int(input(f"Invalid option\nChoose pit stop strategy (1 stop | 2 stop). Enter 1 or 2: "))
-            break
-            
-        except ValueError:
-            print("Invalid option")
-
-    
-        
-    if pit_stop == 1:
-        print("1 pit stop\n")
-        print("Available tyre strategies:\n")
-        for i in tyre1:
-            print(i)
-        while True:
-            try:
-                tyre_choice = int(input("\nSelect tyre strategy. Enter 1 or 2 or 3: "))
-                
-                while tyre_choice not in pit:
-                    tyre_choice = int(input(f"Invalid option\nSelect tyre strategy. Enter 1 or 2 or 3: "))
-                break
-            
-            except ValueError:
-                print("Invalid option")
-        
-
-    elif pit_stop == 2:
-        print("2 pit stop\n")
-        print("Available tyre strategies:\n")
-        for i in tyre2:
-            print(i)
-        while True:
-            try:
-                tyre_choice = int(input("\nSelect tyre strategy. Enter 1 or 2 or 3: "))
-                while tyre_choice not in pit:
-                    tyre_choice = int(input(f"Invalid option\nSelect tyre strategy. Enter 1 or 2 or 3: "))
-                break
-            
-            except ValueError:
-                print("Invalid option")
-
-
-
-
-    print("")
-
-    lights = ["🔴", "🔴", "🔴", "START!!!"]
-    for line in lights:
-        print(line)
-        time.sleep(0.7)
-    
-    driver = []   #creates a list where the shuffled drivers will be stored
-
-    with open("drivers.csv", "r") as csv_file:   #opens csv file
+    with open("drivers.csv", "r") as csv_file:
         csv_reader = csv.reader(csv_file)
-        for line in csv_reader:
-            new_name, new_number, new_team = line
-            driver.append(line)  #writes the data into the list
-   
-    random.shuffle(driver)    #shuffles the drivers
-    
-    position = 1   
-
-    Pos = "Position"
-    Name = "Name"
-    Time = "Interval"
-    print(f"\n{Pos:<9} {Name:<11} {Time} ")
-
-    for line in driver:
-        new_name, new_number, new_team = line
-        lap_add = random.uniform(0, add_time)
-        lap_time = round(lap_add, 3)
+        drivers = list(csv_reader)
         
-        if position == 1:
+    
+    if len(drivers) == 8:
+        print("\nNot enough drivers on the grid (8/10). Create a new team in the menu!")
+    else:
+        
+
+        if race_name == "Unselected":
+            while race_name == "Unselected":
+                print("\nTrack not selected")
+                race_name = race_track()
+        else:
+            read_track(race_name)
+
+        track_weather = random.randint(5, 10)
+
+        if track_weather == 7:
+        
+            print("Weather: Rain")
+            print("Warning **Wet Track**\n")
+            time.sleep(0.7)
+            weather = "wet"
+        else:
+       
+            print("Weather: Sunny\n")
+            time.sleep(0.7)
+            weather = "dry"
+
+        if weather == "dry":
+            add_time = 4.999
+        elif weather == "wet":
+            add_time = 8.999
+
+        pit = [1,2,3]
+
+        tyre1 = ["1. Medium - Hard", "2. Hard - Medium", "3. Medium - Medium"]
+        tyre2 = ["1. Soft - Medium - Soft", "2. Medium - Soft - Medium", "3. Medium - Hard - Soft"]
+
+        while True:
+            try:
+                pit_stop = int(input("Choose pit stop strategy (1 stop | 2 stop). Enter 1 or 2: "))
+                while pit_stop not in pit:
+                    pit_stop = int(input(f"Invalid option\nChoose pit stop strategy (1 stop | 2 stop). Enter 1 or 2: "))
+                break
+            
+            except ValueError:
+                print("Invalid option")
+
+    
+        
+        if pit_stop == 1:
+            print("1 pit stop\n")
+            print("Available tyre strategies:\n")
+            for i in tyre1:
+                print(i)
+            while True:
+                try:
+                    tyre_choice = int(input("\nSelect tyre strategy. Enter 1 or 2 or 3: "))
+                
+                    while tyre_choice not in pit:
+                        tyre_choice = int(input(f"Invalid option\nSelect tyre strategy. Enter 1 or 2 or 3: "))
+                    break
+            
+                except ValueError:
+                    print("Invalid option")
+        
+
+        elif pit_stop == 2:
+            print("2 pit stop\n")
+            print("Available tyre strategies:\n")
+            for i in tyre2:
+                print(i)
+            while True:
+                try:
+                    tyre_choice = int(input("\nSelect tyre strategy. Enter 1 or 2 or 3: "))
+                    while tyre_choice not in pit:
+                        tyre_choice = int(input(f"Invalid option\nSelect tyre strategy. Enter 1 or 2 or 3: "))
+                    break
+            
+                except ValueError:
+                    print("Invalid option")
+
+
+
+
+        print("")
+
+        lights = ["🔴", "🔴", "🔴", "START!!!"]
+        for line in lights:
+            print(line)
+            time.sleep(0.7)
+    
+        driver = []   #creates a list where the shuffled drivers will be stored
+
+        with open("drivers.csv", "r") as csv_file:   #opens csv file
+            csv_reader = csv.reader(csv_file)
+            for line in csv_reader:
+                new_name, new_number, new_team = line
+                driver.append(line)  #writes the data into the list
+   
+        random.shuffle(driver)    #shuffles the drivers
+    
+        position = 1   
+
+        Pos = "Position"
+        Name = "Name"
+        Time = "Interval"
+        print(f"\n{Pos:<9} {Name:<11} {Time} ")
+
+        for line in driver:
+            new_name, new_number, new_team = line
+            lap_add = random.uniform(0, add_time)
+            lap_time = round(lap_add, 3)
+        
+            if position == 1:
                 print(f"{position:<9} {new_name:<11}    -")
                 position = position + 1       
-        else:
+            else:
                 print(f"{position:<9} {new_name:<11} +{lap_time:.3f}")
                 position = position + 1
 
