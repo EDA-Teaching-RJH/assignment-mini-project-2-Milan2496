@@ -2,10 +2,8 @@ import csv   #imports data from csv file
 import re
 import random    #has function to randomly generate number
 
-
-#imports data from file Driver.py
-from Driver import Driver
-from Track import Track
+from Driver import Driver    #imports data from file Driver.py
+from Track import Track      #imports data from file Track.py
 
 #allows user to choose from a variety of options within the menu
 def display_menu():
@@ -13,7 +11,7 @@ def display_menu():
     print("1. View Grid")    #shows all drivers on the grid
     print("2. Reset Grid")   #resets grid to a default lineup of drivers
     print("3. Register Driver")   #allows user to add their own driver to the grid
-    print("4. Choose track")
+    print("4. Choose track")    #allows user to choose the track they want
     print("5. Start Qualifying")  #orders drivers
     print("6. Start Race") #completes a 5 lap race and shows drivers postions at the end
     print("7. Exit")  #allows user to exit menu
@@ -36,7 +34,7 @@ def view_grid():
         for line in csv_reader:
             new_name, new_number, new_team = line   
             driver = Driver(new_name, new_number, new_team)
-            driver.display()   #usees the function inside the other code and displays the information
+            driver.display()   #uses the function inside the other code and displays the information
                 
 
 def reset_grid():
@@ -130,8 +128,6 @@ def race_track():
         
     return race_name
 
-
-
     
 def read_track(race_name):
         
@@ -150,10 +146,7 @@ def read_track(race_name):
                     print(f"")
                     track.track_display()          
         
-        
-        
     
-        
 
 def qualifying(race_name):
 
