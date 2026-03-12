@@ -181,7 +181,7 @@ def read_track(race_name):
                     track = Track(track_name, best_time, wet, dry)
                     print(f"")
                     track.track_display()        
-                    return wet, dry 
+                    return wet, dry
           
     
 
@@ -192,9 +192,9 @@ def qualifying(race_name, wet, dry):
     if race_name == "Unselected":
         while race_name == "Unselected":
             print("\nTrack not selected")
-            race_name = race_track()
+            wet,dry,race_name = race_track()
     else:
-        wet , dry = read_track(race_name)
+        read_track(race_name)
 
     driver = []   #creates a list where the shuffled drivers will be stored
 
@@ -212,20 +212,24 @@ def qualifying(race_name, wet, dry):
     
     if track_weather == 7:
         lap_time = wet   #wet lap conditions
+        lap_time = int(lap_time)
         print("Weather: Rain")
         print("Warning **Wet Track**\n")
         time.sleep(0.7)
         weather = "wet"
     else:
-        lap_time = dry    #dry lap conditions
+        lap_time = dry   
+        lap_time = int(lap_time) #dry lap conditions
         print("Weather: Sunny\n")
         time.sleep(0.7)
         weather = "dry"
 
     if weather == "dry":
         add_time = 0.999
+        
     elif weather == "wet":
         add_time = 1.999
+        
 
     Pos = "Position"
     Name = "Name"
@@ -241,7 +245,7 @@ def qualifying(race_name, wet, dry):
         
 
 
-def race(wet, dry , race_name):
+def race(race_name):
     
     import time     #import a library to delay the time it takes to print out an output
 
@@ -250,18 +254,18 @@ def race(wet, dry , race_name):
             print("\nTrack not selected")
             race_name = race_track()
     else:
-        wet, dry = read_track(race_name)
+        read_track(race_name)
 
     track_weather = random.randint(5, 10)
 
     if track_weather == 7:
-        lap_time = wet   #wet lap conditions
+        
         print("Weather: Rain")
         print("Warning **Wet Track**\n")
         time.sleep(0.7)
         weather = "wet"
     else:
-        lap_time = dry    #dry lap conditions
+       
         print("Weather: Sunny\n")
         time.sleep(0.7)
         weather = "dry"
@@ -308,7 +312,9 @@ def race(wet, dry , race_name):
 
 #uses user input in the main menu to select which function to use
 race_name = "Unselected"
-def main(race_name):
+wet = 0
+dry = 0
+def main(race_name,wet,dry):
     while True:    
         opt = display_menu()
         if opt == 1:
@@ -325,11 +331,11 @@ def main(race_name):
             race_name, wet, dry = race_track()  
         if opt == 5:
             print("\n---QUALIFYING RESULTS---")
-            qualifying(wet, dry, race_name)
+            qualifying(race_name, wet, dry)
         if opt == 6:
             print("-----START RACE-----")  
-            race(wet, dry, race_name)                
+            race(race_name)                
         elif opt == 7:
              print("Exit")
              return
-main(race_name)
+main(race_name,wet,dry)
