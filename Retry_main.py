@@ -192,57 +192,66 @@ def qualifying(race_name, wet, dry):
 
     import time
 
-    if race_name == "Unselected":
-        while race_name == "Unselected":
-            print("\nTrack not selected")
-            wet,dry,race_name = race_track()
-    else:
-        read_track(race_name)
-
-    driver = []   #creates a list where the shuffled drivers will be stored
-
-    with open("drivers.csv", "r") as csv_file:   #opens csv file
+    with open("drivers.csv", "r") as csv_file:
         csv_reader = csv.reader(csv_file)
-        for line in csv_reader:
-            new_name, new_number, new_team = line
-            driver.append(line)  #writes the data into the list
-   
-    random.shuffle(driver)    #shuffles the drivers
+        drivers = list(csv_reader)
+        
     
-    position = 1   
-
-    track_weather = random.randint(5, 10)
-    
-    if track_weather == 7:
-        lap_time = wet   #wet lap conditions
-        print("Weather: Rain")
-        print("Warning **Wet Track**\n")
-        time.sleep(0.7)
-        weather = "wet"
+    if len(drivers) == 8:
+        print("\nNot enough drivers on the grid (8/10). Create a new team in the menu!")
     else:
-        lap_time = dry    #dry lap conditions
-        print("Weather: Sunny\n")
-        time.sleep(0.7)
-        weather = "dry"
 
-    if weather == "dry":
-        add_time = 0.999
+        if race_name == "Unselected":
+            while race_name == "Unselected":
+                print("\nTrack not selected")
+                wet,dry,race_name = race_track()
+        else:
+            read_track(race_name)
+
+        driver = []   #creates a list where the shuffled drivers will be stored
+
+        with open("drivers.csv", "r") as csv_file:   #opens csv file
+            csv_reader = csv.reader(csv_file)
+            for line in csv_reader:
+                new_name, new_number, new_team = line
+                driver.append(line)  #writes the data into the list
+   
+        random.shuffle(driver)    #shuffles the drivers
+    
+        position = 1   
+
+        track_weather = random.randint(5, 10)
+    
+        if track_weather == 7:
+            lap_time = wet   #wet lap conditions
+            print("Weather: Rain")
+            print("Warning **Wet Track**\n")
+            time.sleep(0.7)
+            weather = "wet"
+        else:
+            lap_time = dry    #dry lap conditions
+            print("Weather: Sunny\n")
+            time.sleep(0.7)
+            weather = "dry"
+
+        if weather == "dry":
+            add_time = 0.999
         
-    elif weather == "wet":
-        add_time = 1.999
+        elif weather == "wet":
+            add_time = 1.999
         
 
-    Pos = "Position"
-    Name = "Name"
-    print(f"{Pos:<9} {Name:<12} Time ")
+        Pos = "Position"
+        Name = "Name"
+        print(f"{Pos:<9} {Name:<12} Time ")
 
-    for line in driver:
-        new_name, new_number, new_team = line
-        lap_add = random.uniform(0, add_time)
-        lap_time = round(lap_time + lap_add, 3)
+        for line in driver:
+            new_name, new_number, new_team = line
+            lap_add = random.uniform(0, add_time)
+            lap_time = round(lap_time + lap_add, 3)
         
-        print(f"{position:<9} {new_name:<12} 1:{lap_time:.3f}")
-        position = position + 1
+            print(f"{position:<9} {new_name:<12} 1:{lap_time:.3f}")
+            position = position + 1
         
 
 
@@ -360,6 +369,7 @@ def race(race_name):
         Pos = "Position"
         Name = "Name"
         Time = "Interval"
+        print("\n---------RACE RESULTS---------")
         print(f"\n{Pos:<9} {Name:<11} {Time} ")
 
         for line in driver:
