@@ -64,10 +64,43 @@ def reset_grid():
             print("Invalid input") #prompts user to try again
 
 
-def register_driver():
+def create_team():
+
+    
+
+    team_list = [1,2,3]
 
     while True:
-        new_name = input("Driver name: ").strip() 
+        try:
+            new_team = int(input("Choose team - | 1.Mercedes | 2.Audi | 3.Mclaren |: "))
+            while new_team not in team_list:
+                new_team = int(input(f"Invalid Team\nChoose team - | 1.Mercedes | 2.Audi | 3.Mclaren |: "))
+            break
+            
+        except ValueError:
+            print("Invalid Team")
+
+    if new_team == 1:
+        new_team = "Mercedes"
+    elif new_team == 2:
+        new_team = "Audi"
+    elif new_team == 3:
+        new_team = "Mclaren" 
+
+    print(f"\nChoose 2 drivers\n")
+
+    team_full = 1
+
+    while team_full < 3:
+        add_driver(new_team, team_full)
+        team_full = team_full + 1
+
+    print("Team Created!")
+
+
+def add_driver(new_team, team_full):
+    while True:
+        new_name = input(f"Driver {team_full} name: ").strip() 
         if re.search(r"^[a-zA-Z ]+$", new_name):   #checks that the input is valid inside the parameters of being in the alphabet
             new_name = new_name.title()
             break
@@ -76,32 +109,13 @@ def register_driver():
 
     while True:
         try:
-            new_number = int(input("Driver number (2-99): "))
+            new_number = int(input(f"Driver {team_full} number (2-99): "))
             while new_number < 2 or new_number > 99:    #checks that the numnber is within the range of 2 and 99
                 new_number = int(input("Number Unavailable. Choose driver number (2-99): "))
         except ValueError:
             print("Invalid input")
         else:
-            break
-    
-    team_list = [1,2,3]
-    
-    while True:
-        try:
-            new_team = int(input("Choose team - | 1.Mercedes | 2.Audi | 3.Mclaren |: "))
-            while new_team not in team_list:
-                new_team = int(input("Invalid Team. Choose team - | 1.Mercedes | 2.Audi | 3.Mclaren |: "))
-            break
-            
-        except ValueError:
-            print("Invalid input")
-
-    if new_team == 1:
-        new_team = "Mercedes"
-    elif new_team == 2:
-        new_team = "Audi"
-    elif new_team == 3:
-        new_team = "Mclaren"      
+            break    
 
     driver = Driver(new_name, new_number, new_team)
 
@@ -109,7 +123,10 @@ def register_driver():
     with open ("drivers.csv", "a", newline='') as file:
         writer = csv.writer(file)
         writer.writerow([driver.new_name, driver.new_number, driver.new_team])
-    print("Driver added")
+    print("Driver added\n")
+
+
+
 
 
 def race_track():
@@ -297,8 +314,8 @@ def main(race_name):
             print("\nRESET GRID")
             reset_grid()
         if opt == 3:           
-            print("\n-----REGISTER DRIVER-----")
-            register_driver()
+            print("\n-----CREATE TEAM-----")
+            create_team()
         if opt == 4:
             print("-----CHOOSE TRACK-----")  
             race_name = race_track()  
