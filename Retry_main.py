@@ -126,14 +126,14 @@ def race_track():
         except ValueError:
             print("Invalid input")
 
-    read_track()
+    read_track(race_name)
         
     return race_name
 
 
 
     
-def read_track():
+def read_track(race_name):
         
         track = []
 
@@ -165,7 +165,7 @@ def qualifying(race_name):
             print("\nTrack not selected")
             race_name = race_track()
     else:
-        print(f"\nTrack: {race_name}")
+        read_track(race_name)
 
     driver = []   #creates a list where the shuffled drivers will be stored
 
