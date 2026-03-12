@@ -10,7 +10,7 @@ def display_menu():
     print("\n--------F1 MENU--------")
     print("1. View Grid")    #shows all drivers on the grid
     print("2. Reset Grid")   #resets grid to a default lineup of drivers
-    print("3. Register Driver")   #allows user to add their own driver to the grid
+    print("3. Create your team")   #allows user to add their own driver to the grid
     print("4. Choose track")    #allows user to choose the track they want
     print("5. Start Qualifying")  #orders drivers
     print("6. Start Race") #completes a 5 lap race and shows drivers postions at the end
@@ -73,7 +73,14 @@ def create_team():
     
     if len(drivers) == 10:
         print("Grid is full (5 teams/10 drivers MAX)")
-        return
+        choice = input("Do you want to reset the grid? Select Yes or No: ")
+        choice = choice.title()
+        if choice == "Yes":
+            reset_grid()
+        elif choice == "No":
+            return
+        else:
+            print("Invalid Input")
 
     team_list = [1,2,3]
 
