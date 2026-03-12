@@ -276,6 +276,60 @@ def race(race_name):
     elif weather == "wet":
         add_time = 8.999
 
+    pit = [1,2,3]
+
+    tyre1 = ["1. Medium - Hard", "2. Hard - Medium", "3. Medium - Medium"]
+    tyre2 = ["1. Soft - Medium - Soft", "2. Medium - Soft - Medium", "3. Medium - Hard - Soft"]
+
+    while True:
+        try:
+            pit_stop = int(input("Choose pit stop strategy (1 stop | 2 stop). Enter 1 or 2: "))
+            while pit_stop not in pit:
+                pit_stop = int(input(f"Invalid option\nChoose pit stop strategy (1 stop | 2 stop). Enter 1 or 2: "))
+            break
+            
+        except ValueError:
+            print("Invalid option")
+
+    
+        
+    if pit_stop == 1:
+        print("1 pit stop\n")
+        print("Available tyre strategies:\n")
+        for i in tyre1:
+            print(i)
+        while True:
+            try:
+                tyre_choice = int(input("\nSelect tyre strategy. Enter 1 or 2 or 3: "))
+                
+                while tyre_choice not in pit:
+                    tyre_choice = int(input(f"Invalid option\nSelect tyre strategy. Enter 1 or 2 or 3: "))
+                break
+            
+            except ValueError:
+                print("Invalid option")
+        
+
+    elif pit_stop == 2:
+        print("2 pit stop\n")
+        print("Available tyre strategies:\n")
+        for i in tyre2:
+            print(i)
+        while True:
+            try:
+                tyre_choice = int(input("\nSelect tyre strategy. Enter 1 or 2 or 3: "))
+                while tyre_choice not in pit:
+                    tyre_choice = int(input(f"Invalid option\nSelect tyre strategy. Enter 1 or 2 or 3: "))
+                break
+            
+            except ValueError:
+                print("Invalid option")
+
+
+
+
+    print("")
+
     lights = ["🔴", "🔴", "🔴", "START!!!"]
     for line in lights:
         print(line)
