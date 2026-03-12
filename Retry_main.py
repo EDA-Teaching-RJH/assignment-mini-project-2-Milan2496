@@ -66,7 +66,14 @@ def reset_grid():
 
 def create_team():
 
+    with open("drivers.csv", "r") as csv_file:
+        csv_reader = csv.reader(csv_file)
+        drivers = list(csv_reader)
+        
     
+    if len(drivers) == 10:
+        print("Grid is full (5 teams/10 drivers MAX)")
+        return
 
     team_list = [1,2,3]
 
