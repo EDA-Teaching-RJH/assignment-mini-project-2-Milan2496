@@ -154,7 +154,8 @@ def race_track():
             
             race_name = input("Select a track - Monza | Spa | Silverstone: ")
             race_name = race_name.title()
-            if re.match(r"^(monza|spa|silverstone)$", race_name):
+            if re.match(r"^(Monza|Spa|Silverstone)$", race_name):
+                
                 break        
             else:
                 print("Invalid input")
