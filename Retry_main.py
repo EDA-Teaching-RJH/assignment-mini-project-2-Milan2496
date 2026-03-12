@@ -297,8 +297,8 @@ def race(race_name):
 
         pit = [1,2,3]
 
-        tyre1 = ["1. Medium - Hard", "2. Hard - Medium", "3. Medium - Medium"]
-        tyre2 = ["1. Soft - Medium - Soft", "2. Medium - Soft - Medium", "3. Medium - Hard - Soft"]
+        tyre1 = ["1. Medium → Hard", "2. Hard → Medium", "3. Medium → Medium"]
+        tyre2 = ["1. Soft → Medium → Soft", "2. Medium → Soft → Medium", "3. Medium → Hard → Soft"]
 
         while True:
             try:
@@ -313,13 +313,14 @@ def race(race_name):
     
         
         if pit_stop == 1:
-            print("1 pit stop\n")
+            print("\n1 pit stop\n")
             print("Available tyre strategies:\n")
             for i in tyre1:
                 print(i)
+            print("")
             while True:
                 try:
-                    tyre_choice = int(input("\nSelect tyre strategy. Enter 1 or 2 or 3: "))
+                    tyre_choice = int(input("Select tyre strategy. Enter 1 or 2 or 3: "))
                 
                     while tyre_choice not in pit:
                         tyre_choice = int(input(f"Invalid option\nSelect tyre strategy. Enter 1 or 2 or 3: "))
@@ -327,22 +328,36 @@ def race(race_name):
             
                 except ValueError:
                     print("Invalid option")
+
+            if tyre_choice == 1:
+                print("\nSTRATEGY: 1 Stop (Medium → Hard)")
+            elif tyre_choice == 2:
+                print("\nSTRATEGY: 1 Stop (Hard → Medium)")
+            elif tyre_choice == 3:
+                print("\nSTRATEGY: 1 Stop (Medium → Medium)")
         
 
         elif pit_stop == 2:
-            print("2 pit stop\n")
+            print("\n2 pit stop\n")
             print("Available tyre strategies:\n")
             for i in tyre2:
                 print(i)
+            print("")
             while True:
                 try:
-                    tyre_choice = int(input("\nSelect tyre strategy. Enter 1 or 2 or 3: "))
+                    tyre_choice = int(input("Select tyre strategy. Enter 1 or 2 or 3: "))
                     while tyre_choice not in pit:
                         tyre_choice = int(input(f"Invalid option\nSelect tyre strategy. Enter 1 or 2 or 3: "))
                     break
             
                 except ValueError:
                     print("Invalid option")
+            if tyre_choice == 1:
+                print("\nSTRATEGY: 2 Stop (Soft → Medium → Soft)")
+            elif tyre_choice == 2:
+                print("\nSTRATEGY: 2 Stop (Medium → Soft → Medium)")
+            elif tyre_choice == 3:
+                print("\nSTRATEGY: 2 Stop (Medium → Hard → Soft)")
 
 
 
