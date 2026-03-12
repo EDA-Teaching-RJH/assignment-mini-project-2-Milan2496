@@ -149,18 +149,15 @@ def add_driver(new_team, team_full):
 def race_track():
     
     print("")
-
-    track_list = ["Monza", "Spa",  "Silverstone"]
     
     while True:
-        try:
+            
             race_name = input("Select a track - Monza | Spa | Silverstone: ")
             race_name = race_name.title()
-            while re.match(r"^(monza|spa|silverstone)$", race_name):
-                race_name = input(f"Invalid input \nSelect a track - Monza | Spa | Silverstone: ")
-            break        
-        except ValueError:
-            print("Invalid input")
+            if re.match(r"^(monza|spa|silverstone)$", race_name):
+                break        
+            else:
+                print("Invalid input")
 
     wet, dry = read_track(race_name)
         
