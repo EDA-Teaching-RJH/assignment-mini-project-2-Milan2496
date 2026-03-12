@@ -124,6 +124,13 @@ def add_driver(new_team, team_full):
         else: 
             print("Invalid name")
 
+    unavailable_numbers = []
+
+    with open("drivers.csv", "r") as csv_file:
+        csv_reader = csv.reader(csv_file)
+        for line in csv_reader:
+            unavailable_numbers.append(int(line[1]))
+
     while True:
         try:
             new_number = int(input(f"Driver {team_full} number (2-99): "))
@@ -148,14 +155,12 @@ def add_driver(new_team, team_full):
 
 def race_track():
     
-    print("")
+    print("")   #adds space between print codes
     
-    while True:
-            
+    while True:           
             race_name = input("Select a track - Monza | Spa | Silverstone: ")
             race_name = race_name.title()
-            if re.match(r"^(Monza|Spa|Silverstone)$", race_name):
-                
+            if re.match(r"^(Monza|Spa|Silverstone)$", race_name):              
                 break        
             else:
                 print("Invalid input")
