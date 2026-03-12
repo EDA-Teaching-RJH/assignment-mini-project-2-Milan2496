@@ -175,13 +175,13 @@ def read_track(race_name):
             csv_reader = csv.reader(csv_file)
 
             for line in csv_reader:
-                track_name, best_time, wet, dry = line
+                track_name, best_time, dry, wet = line
             
                 if race_name == track_name:
-                    track = Track(track_name, best_time, wet, dry)
+                    track = Track(track_name, best_time, dry, wet)
                     print(f"")
                     track.track_display()        
-                    return wet, dry
+                    return float(wet), float(dry)
           
     
 
@@ -212,14 +212,12 @@ def qualifying(race_name, wet, dry):
     
     if track_weather == 7:
         lap_time = wet   #wet lap conditions
-        lap_time = int(lap_time)
         print("Weather: Rain")
         print("Warning **Wet Track**\n")
         time.sleep(0.7)
         weather = "wet"
     else:
-        lap_time = dry   
-        lap_time = int(lap_time) #dry lap conditions
+        lap_time = dry    #dry lap conditions
         print("Weather: Sunny\n")
         time.sleep(0.7)
         weather = "dry"
