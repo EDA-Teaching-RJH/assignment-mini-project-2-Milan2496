@@ -126,39 +126,46 @@ def race_track():
         except ValueError:
             print("Invalid input")
 
+    read_track()
+        
+    return race_name
 
-    track = []
 
-    with open("tracks.csv", "r") as csv_file:
-        csv_reader = csv.reader(csv_file)
+
+    
+def read_track():
+        
+        track = []
+
+        with open("tracks.csv", "r") as csv_file:
+            csv_reader = csv.reader(csv_file)
 
         #reads each line of code in the csv file
 
-        for line in csv_reader:
-            track_name, best_time, wet, dry = line
+            for line in csv_reader:
+                track_name, best_time, wet, dry = line
             
-            if race_name == track_name:
-                track = Track(track_name, best_time, wet, dry)
-                print(f"")
-                track.track_display()
-                
+                if race_name == track_name:
+                    track = Track(track_name, best_time, wet, dry)
+                    print(f"")
+                    track.track_display()          
         
         
         
-    return race_name
+    
         
 
 def qualifying(race_name):
 
     import time
 
+    if race_name == "Unselected":
 
-    
-    while race_name == "Unselected":
-        print("\nTrack not selected")
-        race_name = race_track()
-
-    print(f"Track: {race_name}")
+        while race_name == "Unselected":
+            print("\nTrack not selected")
+            race_name = race_track()
+    else:
+        print(f"\nTrack: {race_name}")
 
     driver = []   #creates a list where the shuffled drivers will be stored
 
@@ -176,13 +183,13 @@ def qualifying(race_name):
     
     if track_weather == 7:
         lap_time = 20.294    #wet lap conditions
-        print("\nWeather: Rain")
+        print("Weather: Rain")
         print("Warning **Wet Track**\n")
         time.sleep(0.7)
         weather = "wet"
     else:
         lap_time = 18.792    #dry lap conditions
-        print("\nWeather: Sunny\n")
+        print("Weather: Sunny\n")
         time.sleep(0.7)
         weather = "dry"
 
