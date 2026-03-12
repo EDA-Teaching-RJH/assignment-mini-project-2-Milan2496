@@ -71,8 +71,8 @@ def create_team():
         drivers = list(csv_reader)
         
     
-    if len(drivers) == 10:
-        print("Grid is full (5 teams/10 drivers MAX)")
+    if len(drivers) == 10:  #checks length of drivers and executes code
+        print("\nGrid is full (5 teams/10 drivers MAX)")
         choice = input("Do you want to reset the grid? Select Yes or No: ")
         choice = choice.title()
         if choice == "Yes":
