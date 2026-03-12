@@ -51,6 +51,10 @@ def reset_grid():
                 writer.writerow(["Hadjar", "6", "Red Bull"])
                 writer.writerow(["Hamilton", "44", "Ferrari"])
                 writer.writerow(["Leclerc", "16", "Ferrari"])
+                writer.writerow(["Albon", "23", "Williams"])
+                writer.writerow(["Sainz", "55", "Williams"])
+                writer.writerow(["Lawson", "30", "Racing Bulls"])
+                writer.writerow(["Lindblad", "41", "Racing Bulls"])
             print("GRID IS RESET")
             break
         elif decide == "No":
@@ -80,7 +84,6 @@ def register_driver():
         else:
             break
     
-
     team_list = [1,2,3]
     
     while True:
@@ -101,6 +104,7 @@ def register_driver():
         new_team = "Mclaren"      
 
     driver = Driver(new_name, new_number, new_team)
+
     #opens csv file and writes in the new driver
     with open ("drivers.csv", "a", newline='') as file:
         writer = csv.writer(file)
@@ -136,16 +140,13 @@ def read_track(race_name):
         with open("tracks.csv", "r") as csv_file:
             csv_reader = csv.reader(csv_file)
 
-        #reads each line of code in the csv file
-
             for line in csv_reader:
                 track_name, best_time, wet, dry = line
             
                 if race_name == track_name:
                     track = Track(track_name, best_time, wet, dry)
                     print(f"")
-                    track.track_display()          
-        
+                    track.track_display()             
     
 
 def qualifying(race_name):
@@ -153,7 +154,6 @@ def qualifying(race_name):
     import time
 
     if race_name == "Unselected":
-
         while race_name == "Unselected":
             print("\nTrack not selected")
             race_name = race_track()
