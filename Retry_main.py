@@ -96,10 +96,13 @@ def create_team():
 
     if new_team == 1:
         new_team = "Mercedes"
+        print("Team selected - Mercedes")
     elif new_team == 2:
         new_team = "Audi"
+        print("Team selected - Audi")
     elif new_team == 3:
         new_team = "Mclaren" 
+        print("Team selected - Audi")
 
     print(f"\nChoose 2 drivers\n")
 
@@ -224,7 +227,6 @@ def qualifying(race_name):
 
     Pos = "Position"
     Name = "Name"
-    Time = "Time"
     print(f"{Pos:<9} {Name:<12} Time ")
 
     for line in driver:
@@ -232,33 +234,33 @@ def qualifying(race_name):
         lap_add = random.uniform(0, add_time)
         lap_time = round(lap_time + lap_add, 3)
         
-        if re.search(r"^[0-9]{2}.[0-9]{2}+$", str(lap_time)):
-            print(f"{position:<9} {new_name:<12} 1:{lap_time:.3f}0")
-            position = position + 1
-        elif re.search(r"^[0-9]{8}.[0-9]{1}+$", str(lap_time)):
-            print(f"{position:<9} {new_name:<12} 1:{lap_time:.3f}00")
-            position = position + 1
-        else:
-            print(f"{position:<9} {new_name:<12} 1:{lap_time:.3f}")
-            position = position + 1
+        print(f"{position:<9} {new_name:<12} 1:{lap_time:.3f}")
+        position = position + 1
+        
 
 
 def race(race_name):
     
     import time     #import a library to delay the time it takes to print out an output
 
+    if race_name == "Unselected":
+        while race_name == "Unselected":
+            print("\nTrack not selected")
+            race_name = race_track()
+    else:
+        read_track(race_name)
 
     track_weather = random.randint(5, 10)
 
     if track_weather == 7:
         lap_time = 20.294    #wet lap conditions
-        print("\nWeather: Rain")
+        print("Weather: Rain")
         print("Warning **Wet Track**\n")
         time.sleep(0.7)
         weather = "wet"
     else:
         lap_time = 18.792    #dry lap conditions
-        print("\nWeather: Sunny\n")
+        print("Weather: Sunny\n")
         time.sleep(0.7)
         weather = "dry"
 
@@ -295,24 +297,10 @@ def race(race_name):
         lap_time = round(lap_add, 3)
         
         if position == 1:
-            if re.search(r"^[0-9]{2}.[0-9]{2}+$", str(lap_time)):
-                print(f"{position:<9} {new_name:<11}    -")
-                position = position + 1
-            elif re.search(r"^[0-9]{2}.[0-9]{1}+$", str(lap_time)):
-                print(f"{position:<9} {new_name:11}    -")
-                position = position + 1
-            else:
                 print(f"{position:<9} {new_name:<11}    -")
                 position = position + 1       
         else:
-            if re.search(r"^[0-9]{2}.[0-9]{2}+$", str(lap_time)):
-                print(f"{position:<9} {new_name:<11} +{lap_time}0")
-                position = position + 1
-            elif re.search(r"^[0-9]{2}.[0-9]{1}+$", str(lap_time)):
-                print(f"{position:<9} {new_name:11} +{lap_time}00")
-                position = position + 1
-            else:
-                print(f"{position:<9} {new_name:<11} +{lap_time}")
+                print(f"{position:<9} {new_name:<11} +{lap_time:.3f}")
                 position = position + 1
 
 
