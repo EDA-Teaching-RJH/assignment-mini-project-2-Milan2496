@@ -13,9 +13,9 @@ def display_menu():
     print("1. View Grid")    #shows all drivers on the grid
     print("2. Reset Grid")   #resets grid to a default lineup of drivers
     print("3. Register Driver")   #allows user to add their own driver to the grid
-    print("4. Start Qualifying")  #orders drivers
-    print("5. Start Race") #completes a 5 lap race and shows drivers postions at the end
-    print("6. Choose track")
+    print("4. Choose track")
+    print("5. Start Qualifying")  #orders drivers
+    print("6. Start Race") #completes a 5 lap race and shows drivers postions at the end
     print("7. Exit")  #allows user to exit menu
     
     while True:
@@ -140,14 +140,23 @@ def race_track():
         
         track = Track(track_name, best_time, wet, dry)
         track.track_display()
-
+        
+    return race_name
         
 
 
 
 
 def qualifying(race_name):
+
+    while race_name == "Unselected":
+        print("Track not selected")
+        race_name = race_track()
+
+
+
     print(race_name)
+
     import time
 
     driver = []   #creates a list where the shuffled drivers will be stored
@@ -290,14 +299,14 @@ def main(race_name):
             print("\n-----REGISTER DRIVER-----")
             register_driver()
         if opt == 4:
+            print("-----CHOOSE TRACK-----")  
+            race_name = race_track()  
+        if opt == 5:
             print("\n---QUALIFYING RESULTS---")
             qualifying(race_name)
-        if opt == 5:
-            print("-----START RACE-----")  
-            race(race_name)  
         if opt == 6:
-            print("-----CHOOSE TRACK-----")  
-            race_name = race_track()              
+            print("-----START RACE-----")  
+            race(race_name)                
         elif opt == 7:
              print("Exit")
              return
