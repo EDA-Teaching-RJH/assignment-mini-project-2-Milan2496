@@ -134,8 +134,8 @@ def add_driver(new_team, team_full):
     while True:
         try:
             new_number = int(input(f"Driver {team_full} number (2-99): "))
-            while new_number < 2 or new_number > 99:    #checks that the numnber is within the range of 2 and 99
-                new_number = int(input("Number Unavailable. Choose driver number (2-99): "))
+            while new_number < 2 or new_number > 99 or new_number in unavailable_numbers:    #checks that the numnber is within the range of 2 and 99
+                new_number = int(input(f"Number Unavailable\nDriver {team_full} number (2-99): "))
         except ValueError:
             print("Invalid input")
         else:
