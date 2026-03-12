@@ -112,6 +112,8 @@ def register_driver():
 
 def race_track():
     
+    print("")
+
     track_list = ["Monza", "Spa",  "Silverstone"]
     
     while True:
@@ -137,6 +139,7 @@ def race_track():
             
             if race_name == track_name:
                 track = Track(track_name, best_time, wet, dry)
+                print(f"")
                 track.track_display()
                 
         
@@ -147,15 +150,15 @@ def race_track():
 
 def qualifying(race_name):
 
+    import time
+
+
+    
     while race_name == "Unselected":
-        print("Track not selected")
+        print("\nTrack not selected")
         race_name = race_track()
 
-
-
-    print(race_name)
-
-    import time
+    print(f"Track: {race_name}")
 
     driver = []   #creates a list where the shuffled drivers will be stored
 
