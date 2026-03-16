@@ -7,4 +7,4 @@ class Track:
         self.dry_time = dry_time
 
     def track_display(self):
-        print(f"Track: {self.track_name} | Record Time:{self.best_time}")
+        print(f"Track: {self.track_name} | Record Time: {self.best_time}")

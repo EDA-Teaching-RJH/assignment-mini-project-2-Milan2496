@@ -34,7 +34,9 @@ def view_grid():
         team = "Team"
         no = "Number"
 
-        print(f"{name:<12} {no:<9} {team:<9} ")
+        print(f"\n{name:<12} {no:<9} {team:<9} ")
+        print("-------------------------------------")
+        
 
         #reads each line of code in the csv file
         for line in csv_reader:
@@ -78,8 +80,8 @@ def create_team():
         
     
     if len(drivers) == 10:  #checks length of drivers and executes code
-        print("\nGrid is full (5 teams/10 drivers MAX)")
-        choice = input("Do you want to reset the grid? Select Yes or No: ")
+        print("Previous save file uploaded...")
+        choice = input("Do you want to replace this save file. Select yes or no:")
         choice = choice.title()
         if choice == "Yes":
             reset_grid()
@@ -185,6 +187,9 @@ def read_track(race_name):
 
             for line in csv_reader:
                 track_name, best_time, dry, wet = line
+
+                dry = float(dry)
+                wet = float(wet)
             
                 if race_name == track_name:
                     track = Track(track_name, best_time, dry, wet)
@@ -210,7 +215,7 @@ def qualifying(race_name, wet, dry):
         if race_name == "Unselected":
             while race_name == "Unselected":
                 print("\nTrack not selected")
-                wet,dry,race_name = race_track()
+                race_name, wet, dry = race_track()
         else:
             read_track(race_name)
 
@@ -245,6 +250,8 @@ def qualifying(race_name, wet, dry):
         
         elif weather == "wet":
             add_time = 1.999
+
+        print("----------QUALIFYING RESULTS----------")
         
 
         Pos = "Position"
@@ -301,7 +308,7 @@ def race(race_name):
         elif weather == "wet":
             add_time = 8.999
 
-        pit = [1,2,3]
+        pit = [1,2]
 
         tyre1 = ["1. Medium → Hard", "2. Hard → Medium", "3. Medium → Medium"]
         tyre2 = ["1. Soft → Medium → Soft", "2. Medium → Soft → Medium", "3. Medium → Hard → Soft"]
@@ -316,7 +323,7 @@ def race(race_name):
             except ValueError:
                 print("Invalid option")
 
-    
+        tyre_num = [1,2,3]
         
         if pit_stop == 1:
             print("\n1 pit stop\n")
@@ -328,7 +335,7 @@ def race(race_name):
                 try:
                     tyre_choice = int(input("Select tyre strategy. Enter 1 or 2 or 3: "))
                 
-                    while tyre_choice not in pit:
+                    while tyre_choice not in tyre_num:
                         tyre_choice = int(input(f"Invalid option\nSelect tyre strategy. Enter 1 or 2 or 3: "))
                     break
             
@@ -352,7 +359,7 @@ def race(race_name):
             while True:
                 try:
                     tyre_choice = int(input("Select tyre strategy. Enter 1 or 2 or 3: "))
-                    while tyre_choice not in pit:
+                    while tyre_choice not in tyre_num:
                         tyre_choice = int(input(f"Invalid option\nSelect tyre strategy. Enter 1 or 2 or 3: "))
                     break
             
@@ -392,6 +399,7 @@ def race(race_name):
         Time = "Interval"
         print("\n---------RACE RESULTS---------")
         print(f"\n{Pos:<9} {Name:<11} {Time} ")
+        
 
         for line in driver:
             new_name, new_number, new_team = line
@@ -414,19 +422,19 @@ def main(race_name,wet,dry):
     while True:    
         opt = display_menu()
         if opt == 1:
-            print("\n---------------VIEW GRID---------------")
+            print("\n--------------VIEW GRID--------------")
             view_grid()
         if opt == 2:           
             print("\nRESET GRID")
             reset_grid()
         if opt == 3:           
-            print("\n-----CREATE TEAM-----")   
+            print("\n---------------------CREATE TEAM---------------------\n")   
             create_team()
         if opt == 4:
-            print("-----CHOOSE TRACK-----")  
+            print("\n-----------------CHOOSE TRACK-----------------")  
             race_name, wet, dry = race_track()  
         if opt == 5:
-            print("\n---QUALIFYING RESULTS---")
+            print("\n----------------START QUALIFYING----------------")
             qualifying(race_name, wet, dry)
         if opt == 6:
             print("-----START RACE-----")  
