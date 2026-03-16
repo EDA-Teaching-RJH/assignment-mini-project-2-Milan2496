@@ -66,7 +66,7 @@ def reset_grid():
             print("GRID IS RESET")
             break
         elif decide == "No":
-            print("Routing back to menu . . .")  #sends user back to main menu
+            print("Routing back to menu...")  #sends user back to main menu
             break
         else:
             print("Invalid input") #prompts user to try again
@@ -77,10 +77,21 @@ def create_team():
     with open("drivers.csv", "r") as csv_file:
         csv_reader = csv.reader(csv_file)
         drivers = list(csv_reader)
-        
-    
+  
     if len(drivers) == 10:  #checks length of drivers and executes code
         print("Previous save file uploaded...")
+
+        drivelist = []
+        teamlist = []
+
+        for line in drivers:
+            new_name, new_number, new_team = line
+            drivelist.append(new_name) 
+            teamlist.append(new_team)  
+            
+        print(drivelist[8])
+        print(drivelist[9])
+
         choice = input("Do you want to replace this save file. Select yes or no:")
         choice = choice.title()
         if choice == "Yes":
