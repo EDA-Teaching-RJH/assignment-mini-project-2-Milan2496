@@ -88,14 +88,27 @@ def create_team():
             new_name, new_number, new_team = line
             drivelist.append(new_name) 
             teamlist.append(new_team)  
-            
-        print(drivelist[8])
-        print(drivelist[9])
 
-        choice = input("Do you want to replace this save file. Select yes or no:")
+        print(f"\nTeam: {teamlist[8]}")
+        print(f"Driver 1: {drivelist[8]}")
+        print(f"Driver 2: {drivelist[9]}\n")
+
+        choice = input("Do you want to replace this save file. Select yes or no: ")
         choice = choice.title()
         if choice == "Yes":
-            reset_grid()
+            with open ("drivers.csv", "w", newline='') as file:
+                writer = csv.writer(file)
+                #adds drivers to default grid
+                writer.writerow(["Verstappen", "3", "Red Bull"])
+                writer.writerow(["Hadjar", "6", "Red Bull"])
+                writer.writerow(["Hamilton", "44", "Ferrari"])
+                writer.writerow(["Leclerc", "16", "Ferrari"])
+                writer.writerow(["Albon", "23", "Williams"])
+                writer.writerow(["Sainz", "55", "Williams"])
+                writer.writerow(["Lawson", "30", "Racing Bulls"])
+                writer.writerow(["Lindblad", "41", "Racing Bulls"])
+
+            print("Save file deleted!")
         elif choice == "No":
             return
         else:
@@ -105,7 +118,7 @@ def create_team():
 
     while True:
         try:
-            new_team = int(input("Choose team - | 1.Mercedes | 2.Audi | 3.Mclaren |: "))
+            new_team = int(input("\nChoose team - | 1.Mercedes | 2.Audi | 3.Mclaren |: "))
             while new_team not in team_list:
                 new_team = int(input(f"Invalid Team\nChoose team - | 1.Mercedes | 2.Audi | 3.Mclaren |: "))
             break
@@ -132,6 +145,22 @@ def create_team():
         team_full = team_full + 1
 
     print("Team Created!")
+
+    with open("drivers.csv", "r") as csv_file:
+        csv_reader = csv.reader(csv_file)
+        drivers = list(csv_reader)
+
+        drivelist = []
+        teamlist = []
+
+        for line in drivers:
+            new_name, new_number, new_team = line
+            drivelist.append(new_name) 
+            teamlist.append(new_team)  
+
+        print(f"\nTeam: {teamlist[8]}")
+        print(f"Driver 1: {drivelist[8]}")
+        print(f"Driver 2: {drivelist[9]}\n")
 
 
 def add_driver(new_team, team_full):
@@ -167,7 +196,6 @@ def add_driver(new_team, team_full):
         writer = csv.writer(file)
         writer.writerow([driver.new_name, driver.new_number, driver.new_team])
     print("Driver added\n")
-
 
 
 
@@ -262,7 +290,7 @@ def qualifying(race_name, wet, dry):
         elif weather == "wet":
             add_time = 1.999
 
-        print("----------QUALIFYING RESULTS----------")
+        print("----------QUALIFYING RESULTS----------\n")
         
 
         Pos = "Position"
@@ -289,7 +317,7 @@ def race(race_name):
         
     
     if len(drivers) == 8:
-        print("\nNot enough drivers on the grid (8/10). Create a new team in the menu!")
+        print("\nNot enough drivers on the grid (8/10)\nCreate a new team in the menu!")
     else:
         
 
@@ -448,7 +476,7 @@ def main(race_name,wet,dry):
             print("\n----------------START QUALIFYING----------------")
             qualifying(race_name, wet, dry)
         if opt == 6:
-            print("-----START RACE-----")  
+            print("\n--------------START RACE--------------")  
             race(race_name)                
         elif opt == 7:
              print("Exit")
