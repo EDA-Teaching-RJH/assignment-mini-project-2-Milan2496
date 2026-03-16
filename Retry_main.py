@@ -30,6 +30,12 @@ def view_grid():
     with open("drivers.csv", "r") as csv_file:
         csv_reader = csv.reader(csv_file)
 
+        name = "Name"
+        team = "Team"
+        no = "Number"
+
+        print(f"{name:<12} {no:<9} {team:<9} ")
+
         #reads each line of code in the csv file
         for line in csv_reader:
             new_name, new_number, new_team = line   

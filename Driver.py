@@ -6,5 +6,5 @@ class Driver:
         self.new_team = new_team
 
     def display(self):
-        print(f"Name: {self.new_name} | #{self.new_number} | Team: {self.new_team}")
+        print(f"{self.new_name:<12} #{self.new_number:<8} {self.new_team}")
         
