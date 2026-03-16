@@ -66,7 +66,7 @@ def reset_grid():
             print("GRID IS RESET")
             break
         elif decide == "No":
-            print("Routing back to menu...")  #sends user back to main menu
+            print("Returning to menu...")  #sends user back to main menu
             break
         else:
             print("Invalid input") #prompts user to try again
@@ -110,6 +110,7 @@ def create_team():
 
             print("Save file deleted!")
         elif choice == "No":
+            print("Returning to menu...")
             return
         else:
             print("Invalid Input")
@@ -118,7 +119,7 @@ def create_team():
 
     while True:
         try:
-            new_team = int(input("\nChoose team - | 1.Mercedes | 2.Audi | 3.Mclaren |: "))
+            new_team = int(input("Choose team - | 1.Mercedes | 2.Audi | 3.Mclaren |: "))
             while new_team not in team_list:
                 new_team = int(input(f"Invalid Team\nChoose team - | 1.Mercedes | 2.Audi | 3.Mclaren |: "))
             break
@@ -250,6 +251,7 @@ def qualifying(race_name, wet, dry):
     if len(drivers) == 8:
         print("\nNot enough drivers on the grid (8/10). Create a new team in the menu!")
     else:
+        print("\nTeam save file uploaded...")
 
         if race_name == "Unselected":
             while race_name == "Unselected":
@@ -319,7 +321,7 @@ def race(race_name):
     if len(drivers) == 8:
         print("\nNot enough drivers on the grid (8/10)\nCreate a new team in the menu!")
     else:
-        
+        print("\nTeam save file uploaded...")
 
         if race_name == "Unselected":
             while race_name == "Unselected":
