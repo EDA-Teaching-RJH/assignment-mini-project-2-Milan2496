@@ -104,13 +104,14 @@ def create_team():
             try:
                 choice = input("Do you want to replace this save file. Select yes or no: ")
                 choice = choice.title()
-                while choice not in rep_choice:
-                    choice = int(input(f"Invalid Team\nDo you want to replace this save file. Select yes or no: "))
+                if choice not in rep_choice:
+                    choice = int(input(f"Invalid input\nDo you want to replace this save file. Select yes or no: "))
                     choice = choice.title()
-                break
+                else:
+                    break
             
             except ValueError:
-                print("Invalid Team")
+                print("Invalid input")
 
         if choice == "Yes":
             with open ("drivers.csv", "w", newline='') as file:
@@ -183,7 +184,7 @@ def create_team():
 
 def add_driver(new_team, team_full):
     while True:
-        new_name = input(f"Driver {team_full} name: ").strip() 
+        new_name = input(f"Driver {team_full} last name: ").strip() 
         if re.search(r"^[a-zA-Z ]+$", new_name):   #checks that the input is valid inside the parameters of being in the alphabet
             new_name = new_name.title()
             break
