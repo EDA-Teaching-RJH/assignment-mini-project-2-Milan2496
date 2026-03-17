@@ -16,10 +16,12 @@ def display_menu():
     print("6. Start Race") #completes a 5 lap race and shows drivers postions at the end
     print("7. Exit")  #allows user to exit menu
     
+    acceptnumber = [1,2,3,4,5,6,7]
+
     while True:
         try:    #tries to execute
             opt = int(input("Select option: "))   #asks user for an input giving them a choice from the menu
-            if opt < 8 or opt > 0:
+            if opt in acceptnumber:
                 return opt
             else:
                 print("Invalid input") 
