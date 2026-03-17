@@ -103,10 +103,10 @@ def create_team():
         while True:
             try:
                 choice = input("Do you want to replace this save file. Select yes or no: ")
+                choice = str(choice)
                 choice = choice.title()
                 if choice not in rep_choice:
-                    choice = int(input(f"Invalid input\nDo you want to replace this save file. Select yes or no: "))
-                    choice = choice.title()
+                    print("Invalid input")                              
                 else:
                     break
             
