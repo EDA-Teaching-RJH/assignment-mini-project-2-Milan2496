@@ -98,8 +98,20 @@ def create_team():
         print(f"Driver 1: {drivelist[8]}")
         print(f"Driver 2: {drivelist[9]}\n")
 
-        choice = input("Do you want to replace this save file. Select yes or no: ")
-        choice = choice.title()
+        rep_choice = ["Yes", "No"] 
+
+        while True:
+            try:
+                choice = input("Do you want to replace this save file. Select yes or no: ")
+                choice = choice.title()
+                while choice not in rep_choice:
+                    choice = int(input(f"Invalid Team\nDo you want to replace this save file. Select yes or no: "))
+                    choice = choice.title()
+                break
+            
+            except ValueError:
+                print("Invalid Team")
+
         if choice == "Yes":
             with open ("drivers.csv", "w", newline='') as file:
                 writer = csv.writer(file)
