@@ -20,7 +20,7 @@ def display_menu():
         try:    #tries to execute
             opt = int(input("Select option: "))   #asks user for an input giving them a choice from the menu
             if opt < 8 or opt > 0:
-                break
+                return opt
             else:
                 print("Invalid input") 
         except ValueError:
