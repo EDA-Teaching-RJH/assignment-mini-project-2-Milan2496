@@ -19,7 +19,10 @@ def display_menu():
     while True:
         try:    #tries to execute
             opt = int(input("Select option: "))   #asks user for an input giving them a choice from the menu
-            break
+            if opt < 8 or opt > 0:
+                break
+            else:
+                print("Invalid input") 
         except ValueError:
             print("Invalid input")    #if the input isn't valid, the program prompts the user to try again
     return opt
@@ -483,4 +486,6 @@ def main(race_name,wet,dry):
         elif opt == 7:
              print("Exit")
              return
+
+
 main(race_name,wet,dry)
