@@ -465,19 +465,19 @@ def main(race_name,wet,dry):
         if opt == 1:
             print("\n--------------VIEW GRID--------------")
             view_grid()
-        if opt == 2:           
+        elif opt == 2:           
             print("\nRESET GRID")
             reset_grid()
-        if opt == 3:           
+        elif opt == 3:           
             print("\n---------------------CREATE TEAM---------------------\n")   
             create_team()
-        if opt == 4:
+        elif opt == 4:
             print("\n-----------------CHOOSE TRACK-----------------")  
             race_name, wet, dry = race_track()  
-        if opt == 5:
+        elif opt == 5:
             print("\n----------------START QUALIFYING----------------")
             qualifying(race_name, wet, dry)
-        if opt == 6:
+        elif opt == 6:
             print("\n--------------START RACE--------------")  
             race(race_name)                
         elif opt == 7:
