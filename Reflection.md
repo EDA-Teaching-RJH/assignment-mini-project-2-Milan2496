@@ -13,3 +13,4 @@
 -To improve, I could add an f1 season, just like in real life, and I could add points to each race so that with every time that the program is loaded, it would save the points from the previous race to the driver file and after a certain amount of races then the season would end and the program would display the driver who won the world chamionship. It could also calculate the constructors championship, which would be the team with the 2 drivers with the highest total points.
 -I could also improve the code by making the qualifying and race have a correlation so that the qualifying actually has an affect on the outcome of the race. 
 -I could also add other real life scenarios like DNFs where the driver does not finish the race or if a driver cannot race then there would be a backup driver to take their place.
+-I could implement regex more where I can check the users inputs rather than by checking if theyre input matches a list.
