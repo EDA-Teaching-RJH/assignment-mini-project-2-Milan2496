@@ -228,7 +228,7 @@ def race_track():
     
 def read_track(race_name):
         
-        track = []       #creats a track list
+        track = []       #creates a track list
 
         with open("tracks.csv", "r") as csv_file:     #opens and reads file
             csv_reader = csv.reader(csv_file)
@@ -247,16 +247,16 @@ def read_track(race_name):
           
     
 
-def qualifying(race_name, wet, dry):
+def qualifying(race_name, wet, dry):     #create function passing these variables
 
-    import time
+    import time     #imports a library called time
 
     with open("drivers.csv", "r") as csv_file:
         csv_reader = csv.reader(csv_file)
-        drivers = list(csv_reader)
+        drivers = list(csv_reader)      #writes all the drivers into a variabel
         
     
-    if len(drivers) == 8:
+    if len(drivers) == 8:         #checks if the length of the variable is equal to 8
         print("\nNot enough drivers on the grid (8/10). Create a new team in the menu!")
     else:
         print("\nTeam save file uploaded...")
@@ -264,7 +264,7 @@ def qualifying(race_name, wet, dry):
         if race_name == "Unselected":
             while race_name == "Unselected":
                 print("\nTrack not selected")
-                race_name, wet, dry = race_track()
+                race_name, wet, dry = race_track()     #runs the fucntion and passes the variables through them
         else:
             read_track(race_name)
 
@@ -278,42 +278,42 @@ def qualifying(race_name, wet, dry):
    
         random.shuffle(driver)    #shuffles the drivers
     
-        position = 1   
+        position = 1   #sets the position to 1
 
-        track_weather = random.randint(5, 10)
+        track_weather = random.randint(5, 10)     #generates a random numnber between 5 and 10
     
-        if track_weather == 7:
+        if track_weather == 7:       #if the random number is 7, the code runs, so there is a 1 in 5 chance of the code running
             lap_time = wet   #wet lap conditions
             print("Weather: Rain")
             print("Warning **Wet Track**\n")
-            time.sleep(0.7)
+            time.sleep(0.7)    #uses the time library to delay the time it takes to print out a code by 0.7 seconds
             weather = "wet"
         else:
             lap_time = dry    #dry lap conditions
             print("Weather: Sunny\n")
-            time.sleep(0.7)
+            time.sleep(0.7)   #uses the time library to delay the time it takes to print out a code by 0.7 seconds
             weather = "dry"
 
         if weather == "dry":
-            add_time = 0.999
+            add_time = 0.999   #when weather is dry then the lap time becomes shorter
         
         elif weather == "wet":
-            add_time = 1.999
+            add_time = 1.999       # when weather is wet then lap times become longer
 
         print("----------QUALIFYING RESULTS----------\n")
         
 
         Pos = "Position"
         Name = "Name"
-        print(f"{Pos:<9} {Name:<12} Time ")
+        print(f"{Pos:<9} {Name:<12} Time ")     #use :< to create a grid
 
         for line in driver:
             new_name, new_number, new_team = line
-            lap_add = random.uniform(0, add_time)
-            lap_time = round(lap_time + lap_add, 3)
+            lap_add = random.uniform(0, add_time)   #generates a number between 0 and the chosen lap time
+            lap_time = round(lap_time + lap_add, 3)    #rounds the time to 3 decimal places
         
             print(f"{position:<9} {new_name:<12} 1:{lap_time:.3f}")
-            position = position + 1
+            position = position + 1         #adds 1 to each position so that it increases by one in every row of the list
         
 
 
@@ -326,7 +326,7 @@ def race(race_name):
         drivers = list(csv_reader)
         
     
-    if len(drivers) == 8:
+    if len(drivers) == 8:   #checks length of drivers
         print("\nNot enough drivers on the grid (8/10)\nCreate a new team in the menu!")
     else:
         print("\nTeam save file uploaded...")
@@ -334,7 +334,7 @@ def race(race_name):
         if race_name == "Unselected":
             while race_name == "Unselected":
                 print("\nTrack not selected")
-                race_name = race_track()
+                race_name = race_track()      #runs function of race track and passed the name of the track through
         else:
             read_track(race_name)
 
@@ -357,12 +357,12 @@ def race(race_name):
         elif weather == "wet":
             add_time = 8.999
 
-        pit = [1,2]
+        pit = [1,2]    #2 variables in the list
 
-        tyre1 = ["1. Medium → Hard", "2. Hard → Medium", "3. Medium → Medium"]
-        tyre2 = ["1. Soft → Medium → Soft", "2. Medium → Soft → Medium", "3. Medium → Hard → Soft"]
+        tyre1 = ["1. Medium → Hard", "2. Hard → Medium", "3. Medium → Medium"]     #list to show a choice of what tyres can be selected for the race
+        tyre2 = ["1. Soft → Medium → Soft", "2. Medium → Soft → Medium", "3. Medium → Hard → Soft"]       #list to show a choice of what tyres can be selected for the race
 
-        while True:
+        while True: #runs until code breaks it when a valid input is passed
             try:
                 pit_stop = int(input("Choose pit stop strategy (1 stop | 2 stop). Enter 1 or 2: "))
                 while pit_stop not in pit:
@@ -370,7 +370,7 @@ def race(race_name):
                 break
             
             except ValueError:
-                print("Invalid option")
+                print("Invalid option")  #lets the user try again with any input that does not match the required format
 
         tyre_num = [1,2,3]
         
@@ -378,8 +378,8 @@ def race(race_name):
             print("\n1 pit stop\n")
             print("Available tyre strategies:\n")
             for i in tyre1:
-                print(i)
-            print("")
+                print(i)   #prints the row of the list
+            print("")   
             while True:
                 try:
                     tyre_choice = int(input("Select tyre strategy. Enter 1 or 2 or 3: "))
@@ -391,7 +391,7 @@ def race(race_name):
                 except ValueError:
                     print("Invalid option")
 
-            if tyre_choice == 1:
+            if tyre_choice == 1:    #assigns the number choice to the correct choice in the list
                 print("\nSTRATEGY: 1 Stop (Medium → Hard)")
             elif tyre_choice == 2:
                 print("\nSTRATEGY: 1 Stop (Hard → Medium)")
@@ -429,7 +429,7 @@ def race(race_name):
         lights = ["🔴", "🔴", "🔴", "START!!!"]
         for line in lights:
             print(line)
-            time.sleep(0.7)
+            time.sleep(0.7)   #prints every line of the list with a gap of 0.7seconds
     
         driver = []   #creates a list where the shuffled drivers will be stored
 
@@ -441,38 +441,38 @@ def race(race_name):
    
         random.shuffle(driver)    #shuffles the drivers
     
-        position = 1   
+        position = 1        #position set to 1
 
-        Pos = "Position"
+        Pos = "Position"  #assigns 3 variables with their corresponding names
         Name = "Name"
-        Time = "Interval"
-        print("\n---------RACE RESULTS---------")
+        Time = "Interval" 
+        print("\n---------RACE RESULTS---------")  #prints the race results
         print(f"\n{Pos:<9} {Name:<11} {Time} ")
         
 
         for line in driver:
             new_name, new_number, new_team = line
             lap_add = random.uniform(0, add_time)
-            lap_time = round(lap_add, 3)
+            lap_time = round(lap_add, 3)    #round time to 3 decimal place
         
-            if position == 1:
+            if position == 1:                   #if the position is 1 then there is no time interval to the next driver
                 print(f"{position:<9} {new_name:<11}    -")
-                position = position + 1       
-            else:
+                position = position + 1        #adds position to next column
+            else:                          #the rest of the drivers have a time interval so the time is printed out
                 print(f"{position:<9} {new_name:<11} +{lap_time:.3f}")
-                position = position + 1
+                position = position + 1        #add position to next column
 
 
 #uses user input in the main menu to select which function to use
-race_name = "Unselected"
+race_name = "Unselected"    #pre-assigns 3 variables
 wet = 0
 dry = 0
 def main(race_name,wet,dry):
-    while True:    
-        opt = display_menu()
-        if opt == 1:
+    while True:             #runs the program until user decides to exit
+        opt = display_menu()    #returns the variable from the menu
+        if opt == 1:      #when opt is equal to 1
             print("\n--------------VIEW GRID--------------")
-            view_grid()
+            view_grid()       #runs the function 
         elif opt == 2:           
             print("\nRESET GRID")
             reset_grid()
@@ -481,16 +481,16 @@ def main(race_name,wet,dry):
             create_team()
         elif opt == 4:
             print("\n-----------------CHOOSE TRACK-----------------")  
-            race_name, wet, dry = race_track()  
+            race_name, wet, dry = race_track()      #passes the variables
         elif opt == 5:
             print("\n----------------START QUALIFYING----------------")
-            qualifying(race_name, wet, dry)
-        elif opt == 6:
+            qualifying(race_name, wet, dry)         #passes the variables
+        elif opt == 6: 
             print("\n--------------START RACE--------------")  
             race(race_name)                
         elif opt == 7:
              print("Exit")
-             return
+             return            #breaks the loop when the user wants to exit
 
-
-main(race_name,wet,dry)
+if __name__ == "__main__":
+    main(race_name,wet,dry)  #return variables
