@@ -257,7 +257,7 @@ def qualifying(race_name, wet, dry):     #create function passing these variable
         
     
     if len(drivers) == 8:         #checks if the length of the variable is equal to 8
-        print("\nNot enough drivers on the grid (8/10). Create a new team in the menu!")
+        print("\nNot enough drivers on the grid (8/10) \nCreate a new team in the menu!")
     else:
         print("\nTeam save file uploaded...")
 

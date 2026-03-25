@@ -14,3 +14,12 @@
 -I could also improve the code by making the qualifying and race have a correlation so that the qualifying actually has an affect on the outcome of the race. 
 -I could also add other real life scenarios like DNFs where the driver does not finish the race or if a driver cannot race then there would be a backup driver to take their place.
 -I could implement regex more where I can check the users inputs rather than by checking if theyre input matches a list.
+
+#Testing
+I wasn't sure how the testing works even with the demonstration from the files given to us so below I will write out some of the testing I did myself when verifying that the code is working
+
+1.In the menu, enter 1: Code will execute, enter 0: Code will tell user it is an invalid input, enter 8: Code will tell user it is an invalid input
+2.In reset grid, enter &: Code will tell user it is an invalid input, enter YeS: Code executes, enter 5: Code will tell user it is an invalid input
+3.In choose track, enter 100: Code will tell user it is an invalid input, enter MONZAAA: Code will tell user it is an invalid input
+4.In create team, enter t: Code will tell user it is an invalid team, enter 5: Code will tell user it is an invalid team
+5.In create team, when adding drivers, enter 65: Code will tell user it is an invalid name, enter %: Code will tell user it is an invalid team
